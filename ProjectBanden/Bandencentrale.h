@@ -1,6 +1,5 @@
 #pragma once
 
-#include <string>
 #include <vector>
 
 #include "Klant.h"
@@ -28,8 +27,8 @@ class Bandencentrale
 		//setters
 		void setNaam(string);
 		void setAdres(string);
-		void setKlanten(vector<Klant*>);
-		void setArtikels(vector<Artikel*>);
+		void setKlanten(vector<Klant*>);  //wordt nog niet gebruikt
+		void setArtikels(vector<Artikel*>);  //wordt nog niet gebruikt
 		void addArtikel(Artikel *);
 
 	private:

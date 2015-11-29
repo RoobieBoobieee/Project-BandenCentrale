@@ -28,7 +28,14 @@ bool Velg::getAluminium() const
 //setters
 void Velg::setBreedte(int i)
 {
-	Breedte = i;
+	if (i < 0)
+	{
+		Breedte = 0;
+	}
+	else
+	{
+		Breedte = i;
+	}
 }
 
 void Velg::setKleur(string s)

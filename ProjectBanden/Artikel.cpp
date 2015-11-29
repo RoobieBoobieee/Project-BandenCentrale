@@ -54,20 +54,49 @@ void Artikel::setFabrikant(string s)
 
 void Artikel::setPrijs(double d)
 {
-	Prijs = d;
+	if (d < 0) 
+	{
+		Prijs = 0;
+	}
+	else 
+	{
+		Prijs = d;
+	}
 }
 
 void Artikel::setDiameter(int i)
 {
-	Diameter = i;
+	if (i < 0)
+	{
+		Diameter = 0;
+	}
+	else
+	{
+		Diameter = i;
+	}
 }
 
 void Artikel::setType(string s)
 {
-	Type = s;
+	// Just to be sure. Gebruiker kan hier normaal niets verkeerd doen aangezien programma deze prop altijd invult. 
+	if (s.compare("Velg") == 0)
+	{
+		Type = s;
+	}
+	else
+	{
+		Type = "Band";
+	}
 }
 
 void Artikel::setAantal(int i)
 {
-	Aantal = i;
+	if (i < 0)
+	{
+		Aantal = 0;
+	}
+	else
+	{
+		Aantal = i;
+	}
 }

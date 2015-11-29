@@ -10,14 +10,14 @@ class Bedrijfsklant :
 		virtual ~Bedrijfsklant();
 	
 		//getters
-		string getBTWnummer();
-		double getVolumekorting();
-		double getBedrijfskorting();
+		string getBTWnummer() const;
+		double getVolumekorting() const;
+		double getBedrijfskorting() const;
 	
 		//setters
 		void setBTWnummer(string);
-		void setVolumekorting(double);
-		void setBedrijfskorting(double);
+		void setVolumekorting(int);
+		void setBedrijfskorting(int);
 	
 	private:
 		string BTWnummer;

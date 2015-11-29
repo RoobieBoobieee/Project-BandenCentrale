@@ -22,9 +22,9 @@ class Klant
 		//setters
 		void setNaam(string);
 		void setAdres(string);
-		void setKorting(double);
+		void setKorting(int);
 		void setBedrijf(string);
-		void setKorting2(double);
+		void setKorting2(int);
 
 	private:
 		string Naam;

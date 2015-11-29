@@ -31,14 +31,28 @@ string Band::getSeizoen() const
 }
 
 //setters
-void Band::setBreedte(int b)
+void Band::setBreedte(int i)
 {
-	Breedte = b;
+	if (i < 0)
+	{
+		Breedte = 0;
+	}
+	else
+	{
+		Breedte = i;
+	}
 }
 
-void Band::setHoogte(int h)
+void Band::setHoogte(int i)
 {
-	Hoogte = h;
+	if (i < 0)
+	{
+		Hoogte = 0;
+	}
+	else
+	{
+		Hoogte = i;
+	}
 }
 
 void Band::setSnelheidsindex(string s)

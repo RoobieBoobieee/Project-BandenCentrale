@@ -12,45 +12,64 @@ Klant::~Klant()
 
 string Klant::getNaam() const
 {
-	return string();
+	return Naam;
 }
 
 string Klant::getAdres() const
 {
-	return string();
+	return Adres;
 }
 
 double Klant::getKorting() const
 {
-	return 0.0;
+	return Korting;
 }
 
 string Klant::getBedrijf() const
 {
-	return string();
+	return Bedrijf;
 }
 
 double Klant::getKorting2() const
 {
-	return 0.0;
+	return Korting2;
 }
 
-void Klant::setNaam(string)
+void Klant::setNaam(string s)
 {
+	Naam = s;
 }
 
-void Klant::setAdres(string)
+void Klant::setAdres(string s)
 {
+	Adres = s;
 }
 
-void Klant::setKorting(double)
+void Klant::setKorting(int i)
 {
+	if (i < 0 || i > 100)
+	{
+		Korting = 0;
+	}
+	else
+	{
+		Korting = (i / 100);
+	}
 }
 
-void Klant::setBedrijf(string)
+void Klant::setBedrijf(string s)
 {
+	Bedrijf = s;
 }
 
-void Klant::setKorting2(double)
+void Klant::setKorting2(int i)
 {
+	if (i < 0 || i > 100)
+	{
+		Korting2 = 0;
+	}
+	else
+	{
+		Korting2 = (i / 100);
+	}
 }

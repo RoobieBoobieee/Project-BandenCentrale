@@ -1,7 +1,5 @@
 #include "Bedrijfsklant.h"
 
-
-
 Bedrijfsklant::Bedrijfsklant()
 {
 }
@@ -11,29 +9,47 @@ Bedrijfsklant::~Bedrijfsklant()
 {
 }
 
-string Bedrijfsklant::getBTWnummer()
+string Bedrijfsklant::getBTWnummer() const
 {
-	return string();
+	return BTWnummer;
 }
 
-double Bedrijfsklant::getVolumekorting()
+double Bedrijfsklant::getVolumekorting() const
 {
-	return 0.0;
+	return Volumekorting;
 }
 
-double Bedrijfsklant::getBedrijfskorting()
+double Bedrijfsklant::getBedrijfskorting() const
 {
-	return 0.0;
+	return Bedrijfskorting;
 }
 
-void Bedrijfsklant::setBTWnummer(string)
+void Bedrijfsklant::setBTWnummer(string s)
 {
+	BTWnummer = s;
 }
 
-void Bedrijfsklant::setVolumekorting(double)
+// kortingen worden rationaal opgeslagen voor later makkelijker met te rekenen
+void Bedrijfsklant::setVolumekorting(int i)
 {
+	if (i < 0 || i > 100)
+	{
+		Volumekorting = 0;
+	}
+	else
+	{
+		Volumekorting = (i/100);
+	}
 }
 
-void Bedrijfsklant::setBedrijfskorting(double)
+void Bedrijfsklant::setBedrijfskorting(int i)
 {
+	if (i < 0 || i > 100)
+	{
+		Bedrijfskorting = 0;
+	}
+	else
+	{
+		Bedrijfskorting = (i / 100);
+	}
 }
