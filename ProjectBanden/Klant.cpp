@@ -73,3 +73,22 @@ void Klant::setKorting2(int i)
 		Korting2 = (i / 100);
 	}
 }
+
+
+//print
+
+void Klant::print() const
+{
+	cout << std::setw(20) << "Naam: ";
+	cout << std::setw(20) << this->getNaam();
+	cout << std::setw(20) << "| Bedrijf";
+	cout << std::setw(20) << this->getBedrijf() << endl;
+
+	cout << std::setw(20) << "Adres:";
+	cout << std::setw(60) << this->getAdres() << endl;
+
+	cout << std::setw(20) << "Korting: ";
+	cout << std::setw(20) << this->getKorting();
+	cout << std::setw(20) << "| Korting2: ";
+	cout << std::setw(20) << this->getKorting2() << endl;
+}

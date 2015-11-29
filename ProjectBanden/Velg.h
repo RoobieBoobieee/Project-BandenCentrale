@@ -18,6 +18,9 @@ class Velg :
 		void setBreedte(int);
 		void setKleur(string);
 		void setAluminium(int);
+
+		//print
+		void print() const;
 	
 	private:
 		int Breedte;

@@ -18,6 +18,9 @@ class Bedrijfsklant :
 		void setBTWnummer(string);
 		void setVolumekorting(int);
 		void setBedrijfskorting(int);
+
+		//print
+		void print() const;
 	
 	private:
 		string BTWnummer;

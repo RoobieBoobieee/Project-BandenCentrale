@@ -1,6 +1,3 @@
-#include <iomanip> 
-#include <iostream>
-
 #include "Bandencentrale.h"
 
 
@@ -172,47 +169,20 @@ int showarticles(string s)
 		system("cls");
 
 		if ((*i)->getType().compare(s) == 0 || s.compare("all") == 0) {
-			cout << std::setw(16) << "Naam: ";
-			cout << std::setw(20) << (*i)->getNaam();
-			cout << std::setw(16) << "| Fabrikant";
-			cout << std::setw(20) << (*i)->getFabrikant() << endl;
-				
-			cout << std::setw(16) << "Prijs (Euro): ";
-			cout << std::setw(20) << (*i)->getPrijs();
-			cout << std::setw(16) << "| Diameter (mm): ";
-			cout << std::setw(20) << (*i)->getDiameter() << endl;
-				
-			cout << std::setw(16) << "Type: ";
-			cout << std::setw(20) << (*i)->getType();
-			cout << std::setw(16) << "| Aantal: ";
-			cout << std::setw(20) << (*i)->getAantal() << endl;
+			
+			(*i)->print();
 			
 			if ((*i)->getType().compare("Band") == 0)
 			{
 				const Band *band = dynamic_cast<const Band *>(*i);
 				
-				cout << std::setw(16) << "Breedte (mm): ";
-				cout << std::setw(20) << band->getBreedte();
-				cout << std::setw(16) << "| Hoogte (mm): ";
-				cout << std::setw(20) << band->getHoogte() << endl;
-				cout << std::setw(16) << "Snelheidsindex: ";
-				cout << std::setw(20) << band->getSnelheidsindex();
-				cout << std::setw(16) << "| Seizoen: ";
-				cout << std::setw(20) << band->getSeizoen() << endl;
-				cout << "++++++++++++++++++++++++++++++++" << endl;
-					
+				band->print();
 			}
 			else if ((*i)->getType().compare("Velg") == 0)
 			{
 				const Velg *velg = dynamic_cast<const Velg *>(*i);
 					
-				cout << std::setw(16) << "Breedte (mm): ";
-				cout << std::setw(20) << velg->getBreedte();
-				cout << std::setw(16) << "| Kleur: ";
-				cout << std::setw(20) << velg->getKleur() << endl;
-				cout << std::setw(16) << "Aluminium: ";
-				cout << std::setw(20) << velg->getAluminium() << endl;
-				cout << "++++++++++++++++++++++++++++++++" << endl;
+				velg->print();
 			}
 		}
 	}

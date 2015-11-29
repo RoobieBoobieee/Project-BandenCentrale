@@ -72,3 +72,20 @@ void Band::setSeizoen(int i)
 	}
 }
 
+
+//print
+
+void Band::print() const
+{
+	Artikel::print();
+
+	cout << std::setw(20) << "Breedte (mm): ";
+	cout << std::setw(20) << this->getBreedte();
+	cout << std::setw(20) << "| Hoogte (mm): ";
+	cout << std::setw(20) << this->getHoogte() << endl;
+	cout << std::setw(20) << "Snelheidsindex: ";
+	cout << std::setw(20) << this->getSnelheidsindex();
+	cout << std::setw(20) << "| Seizoen: ";
+	cout << std::setw(20) << this->getSeizoen() << endl;
+	cout << "++++++++++++++++++++++++++++++++" << endl;
+}

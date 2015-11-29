@@ -1,8 +1,13 @@
 #pragma once
 
+#include <iomanip> 
+#include <iostream>
 #include <string>
 
 using std::string;
+
+using std::cout;
+using std::endl;
 
 class Klant
 {
@@ -25,6 +30,9 @@ class Klant
 		void setKorting(int);
 		void setBedrijf(string);
 		void setKorting2(int);
+
+		//print
+		void print() const;
 
 	private:
 		string Naam;

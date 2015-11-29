@@ -53,3 +53,19 @@ void Bedrijfsklant::setBedrijfskorting(int i)
 		Bedrijfskorting = (i / 100);
 	}
 }
+
+
+//print
+
+void Bedrijfsklant::print() const
+{
+	Klant::print();
+
+	cout << std::setw(20) << "BTW Nummer: ";
+	cout << std::setw(60) << this->getBTWnummer() << endl;
+
+	cout << std::setw(20) << "Volume Korting: ";
+	cout << std::setw(20) << this->getKorting();
+	cout << std::setw(20) << "| Bedrijfs Korting: ";
+	cout << std::setw(20) << this->getKorting2() << endl;
+}

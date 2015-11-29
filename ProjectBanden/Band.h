@@ -21,6 +21,9 @@ class Band :
 		void setSnelheidsindex(string);
 		void setSeizoen(int);
 
+		//print
+		void print() const;
+
 	private:
 		int Breedte;
 		int Hoogte;
