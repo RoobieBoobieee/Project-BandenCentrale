@@ -1,5 +1,8 @@
 #include "Artikel.h"
 
+#include "Band.h"
+#include "Velg.h"
+
 //comstructor & deconstructor
 Artikel::Artikel()
 {
@@ -101,21 +104,22 @@ void Artikel::setAantal(int i)
 	}
 }
 
+
 void Artikel::print() const
 {
 	//TODO: VRAGEN : THIS of VARIABLE 
 	cout << std::setw(20) << "Naam: ";
 	cout << std::setw(20) << this->getNaam();
-	cout << std::setw(20) << "| Fabrikant";
+	cout << "| " << std::setw(18) << "Fabrikant: ";
 	cout << std::setw(20) << this->getFabrikant() << endl;
 
 	cout << std::setw(20) << "Prijs (Euro): ";
 	cout << std::setw(20) << this->getPrijs();
-	cout << std::setw(20) << "| Diameter (mm): ";
+	cout << "| " << std::setw(18) << "Diameter (mm): ";
 	cout << std::setw(20) << this->getDiameter() << endl;
 
 	cout << std::setw(20) << "Type: ";
 	cout << std::setw(20) << this->getType();
-	cout << std::setw(20) << "| Aantal: ";
+	cout << "| " << std::setw(18) << "Aantal: ";
 	cout << std::setw(20) << this->getAantal() << endl;
 }

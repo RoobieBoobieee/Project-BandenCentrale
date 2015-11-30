@@ -54,7 +54,6 @@ void Bedrijfsklant::setBedrijfskorting(int i)
 	}
 }
 
-
 //print
 
 void Bedrijfsklant::print() const
@@ -66,6 +65,6 @@ void Bedrijfsklant::print() const
 
 	cout << std::setw(20) << "Volume Korting: ";
 	cout << std::setw(20) << this->getKorting();
-	cout << std::setw(20) << "| Bedrijfs Korting: ";
+	cout << "| " << std::setw(18) << "Bedrijfs Korting: ";
 	cout << std::setw(20) << this->getKorting2() << endl;
 }

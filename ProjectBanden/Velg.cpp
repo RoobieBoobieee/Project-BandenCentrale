@@ -55,16 +55,17 @@ void Velg::setAluminium(int i)
 	}
 }
 
-
 //print
 
 void Velg::print() const
 {
+	Artikel::print();
+
 	cout << std::setw(20) << "Breedte (mm): ";
 	cout << std::setw(20) << this->getBreedte();
-	cout << std::setw(20) << "| Kleur: ";
+	cout << "| " << std::setw(18) << "Kleur: ";
 	cout << std::setw(20) << this->getKleur() << endl;
 	cout << std::setw(20) << "Aluminium: ";
 	cout << std::setw(20) << this->getAluminium() << endl;
-	cout << "++++++++++++++++++++++++++++++++" << endl;
+	cout << "##############################################################################" << endl;
 }

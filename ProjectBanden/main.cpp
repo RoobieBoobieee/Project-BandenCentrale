@@ -2,7 +2,7 @@
 
 
 int login();
-int articles();
+int articlesmenu();
 int addarticle();
 int addtire();
 int addrim();
@@ -24,30 +24,41 @@ int main()
 	do
 	{
 		system("cls");
-		cout << "##########################################################################" << endl;
-		cout << "#                                                        Logged In As: " << id << " #" << endl;
-		cout << "#    1. Artikels Bekijken                                                #" << endl;
-		cout << "#    2. Artikel Toevoegen                                                #" << endl;
-		cout << "#    3. Artikel Verwijderen                                              #" << endl;
-		cout << "#    4. Klanten Bekijken                                                 #" << endl;
-		cout << "#    9. Stoppen                                                          #" << endl;
-		cout << "#                                                                        #" << endl;
-		cout << "##########################################################################" << endl;
-		cout << endl;
+		cout << "##############################################################################" << endl;
+		cout << "#                                                            Logged In As: " << id << " #" << endl;
+		cout << "#    1. Artikels Bekijken                                                    #" << endl;
+		cout << "#    2. Artikel Toevoegen                                                    #" << endl;
+		cout << "#    3. Artikel Verwijderen                                                  #" << endl;
+		cout << "#    4. Klanten Bekijken                                                     #" << endl;
+		cout << "#    5. Klant Toevoegen                                                      #" << endl;
+		cout << "#    6. Klant Verwijderen                                                    #" << endl;
+		cout << "#    7. Factuuur Aanmaken                                                    #" << endl;
+		cout << "#    9. Stoppen                                                              #" << endl;
+		cout << "#                                                                            #" << endl;
+		cout << "##############################################################################" << endl;
 		cout << "> ";
 		cin >> keuze;
 		cin.get();
 		switch (keuze)
 		{
 		case 1:
-			articles();
+			articlesmenu();
 			break;
 
 		case 2:
-			addarticle();
+			BC.addArtikel();
+
 			break;
 
 		case 3:
+			break;
+
+		case 4:
+			BC.printClients();
+			break;
+
+		case 5:
+			BC.addClient();
 			break;
 
 		case 9: 
@@ -73,14 +84,13 @@ int login()
 	do
 	{
 		system("cls");
-		cout << "##########################################################################" << endl;
-		cout << "#                                                                        #" << endl;
-		cout << "#    1. Eigenaar                                                         #" << endl;
-		cout << "#    2. Personeelslid                                                    #" << endl;
-		cout << "#    9. Stoppen                                                          #" << endl;
-		cout << "#                                                                        #" << endl;
-		cout << "##########################################################################" << endl;
-		cout << endl;
+		cout << "##############################################################################" << endl;
+		cout << "#                                                                            #" << endl;
+		cout << "#    1. Eigenaar                                                             #" << endl;
+		cout << "#    2. Personeelslid                                                        #" << endl;
+		cout << "#    9. Stoppen                                                              #" << endl;
+		cout << "#                                                                            #" << endl;
+		cout << "##############################################################################" << endl;
 		cout << "> ";
 		cin >> id;
 		cin.get();
@@ -110,37 +120,36 @@ int login()
 
 }
 
-int articles()
+int articlesmenu()
 {
 	int choice = 0;
 
 	do
 	{
 		system("cls");
-		cout << "##########################################################################" << endl;
-		cout << "#                                                                        #" << endl;
-		cout << "#    1. Artikels Bekijken                                                #" << endl;
-		cout << "#    2. Banden Bekijken                                                  #" << endl;
-		cout << "#    3. Velgen Bekijken                                                  #" << endl;
-		cout << "#    4. Maten Bekijken                                                   #" << endl;
-		cout << "#    5. Terug                                                            #" << endl;
-		cout << "#    9. Stoppen                                                          #" << endl;
-		cout << "#                                                                        #" << endl;
-		cout << "##########################################################################" << endl;
-		cout << endl;
+		cout << "##############################################################################" << endl;
+		cout << "#                                                                            #" << endl;
+		cout << "#    1. Alle Artikels Bekijken                                               #" << endl;
+		cout << "#    2. Banden Bekijken                                                      #" << endl;
+		cout << "#    3. Velgen Bekijken                                                      #" << endl;
+		cout << "#    4. Maten Bekijken                                                       #" << endl;
+		cout << "#    5. Terug                                                                #" << endl;
+		cout << "#    9. Stoppen                                                              #" << endl;
+		cout << "#                                                                            #" << endl;
+		cout << "##############################################################################" << endl;
 		cout << "> ";
 		cin >> choice;
 		cin.get();
 		switch (choice)
 		{
 		case 1:
-			showarticles("all");
+			BC.printArticles();
 			break;
 		case 2:
-			showarticles("Band");
+			BC.printArticles("Band");
 			break;
 		case 3:
-			showarticles("Velg");
+			BC.printArticles("Velg");
 			break;
 		case 4:
 			break;
@@ -158,35 +167,6 @@ int articles()
 		}
 	} while (choice != 5);
 
-	return 1;
-}
-
-int showarticles(string s)
-{
-
-	for (vector<Artikel*>::const_iterator i = BC.getArtikels()->cbegin(); i != BC.getArtikels()->cend(); ++i)
-	{
-		system("cls");
-
-		if ((*i)->getType().compare(s) == 0 || s.compare("all") == 0) {
-			
-			(*i)->print();
-			
-			if ((*i)->getType().compare("Band") == 0)
-			{
-				const Band *band = dynamic_cast<const Band *>(*i);
-				
-				band->print();
-			}
-			else if ((*i)->getType().compare("Velg") == 0)
-			{
-				const Velg *velg = dynamic_cast<const Velg *>(*i);
-					
-				velg->print();
-			}
-		}
-	}
-	system("pause");
 	return 1;
 }
 

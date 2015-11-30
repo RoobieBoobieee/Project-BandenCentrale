@@ -1,6 +1,5 @@
 #include "Klant.h"
 
-
 Klant::Klant()
 {
 }
@@ -74,14 +73,13 @@ void Klant::setKorting2(int i)
 	}
 }
 
-
 //print
 
 void Klant::print() const
 {
 	cout << std::setw(20) << "Naam: ";
 	cout << std::setw(20) << this->getNaam();
-	cout << std::setw(20) << "| Bedrijf";
+	cout << "| " << std::setw(18) << "Bedrijf";
 	cout << std::setw(20) << this->getBedrijf() << endl;
 
 	cout << std::setw(20) << "Adres:";
@@ -89,6 +87,6 @@ void Klant::print() const
 
 	cout << std::setw(20) << "Korting: ";
 	cout << std::setw(20) << this->getKorting();
-	cout << std::setw(20) << "| Korting2: ";
+	cout << "| " << std::setw(18) << "Korting2: ";
 	cout << std::setw(20) << this->getKorting2() << endl;
 }

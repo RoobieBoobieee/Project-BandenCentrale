@@ -7,6 +7,7 @@
 using std::string;
 
 using std::cout;
+using std::cin;
 using std::endl;
 
 class Artikel
@@ -32,6 +33,7 @@ class Artikel
 		void setDiameter(int);
 		void setType(string);
 		void setAantal(int);
+
 
 		//print
 		void print() const;

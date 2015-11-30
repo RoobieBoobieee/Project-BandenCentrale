@@ -1,5 +1,7 @@
 #pragma once
 #include "Artikel.h"
+
+
 class Band :
 	public Artikel
 {
@@ -20,7 +22,7 @@ class Band :
 		void setHoogte(int);
 		void setSnelheidsindex(string);
 		void setSeizoen(int);
-
+		
 		//print
 		void print() const;
 

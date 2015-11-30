@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Klant.h"
+
 class Bedrijfsklant :
 	public Klant
 {

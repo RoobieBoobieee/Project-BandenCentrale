@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "Klant.h"
+#include "Bedrijfsklant.h"
 
 #include "Band.h"
 #include "Velg.h"
@@ -29,7 +29,20 @@ class Bandencentrale
 		void setAdres(string);
 		void setKlanten(vector<Klant*>);  //wordt nog niet gebruikt
 		void setArtikels(vector<Artikel*>);  //wordt nog niet gebruikt
-		void addArtikel(Artikel *);
+
+		//add
+		void addArtikel(Artikel * optional = NULL);
+		void addClient(Klant * optional = NULL);
+
+		//setup
+		Klant * setupKlant();
+		void setupArtikel(Artikel *);
+		Artikel * setupBand();
+		Artikel * setupVelg();
+
+		//print
+		void printClients() const;
+		void printArticles(string optional = "All") const;
 
 	private:
 		string naam;

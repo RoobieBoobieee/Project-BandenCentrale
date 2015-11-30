@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Artikel.h"
+
 class Velg :
 	public Artikel
 {
