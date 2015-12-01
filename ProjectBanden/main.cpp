@@ -47,10 +47,10 @@ int main()
 
 		case 2:
 			BC.addArtikel();
-
 			break;
 
 		case 3:
+			BC.removeArticle();
 			break;
 
 		case 4:
@@ -152,6 +152,7 @@ int articlesmenu()
 			BC.printArticles("Velg");
 			break;
 		case 4:
+			BC.printSizes();
 			break;
 		case 5:
 			return 0;

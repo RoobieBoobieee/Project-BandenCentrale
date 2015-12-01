@@ -177,6 +177,7 @@ Artikel * Bandencentrale::setupVelg()
 
 	cout << "Breedte: ";
 	cin >> intgr;
+	cin.get();
 	b->setBreedte(intgr);
 
 	cout << "Kleur: ";
@@ -185,6 +186,7 @@ Artikel * Bandencentrale::setupVelg()
 
 	cout << "Aluminium: (Nee=0; Ja=1)" << endl;
 	cin >> intgr;
+	cin.get();
 	b->setAluminium(intgr);
 
 	return(b);
@@ -244,36 +246,8 @@ Klant * Bandencentrale::setupKlant()
 	return k;
 }
 
+
 //print
-void Bandencentrale::printArticles(string s) const
-{
-	system("cls");
-
-	for (vector<Artikel*>::const_iterator i = this->getArtikels()->cbegin(); i != this->getArtikels()->cend(); ++i)
-	{
-
-		if ((*i)->getType().compare(s) == 0 || s.compare("All") == 0) {
-
-			if ((*i)->getType().compare("Band") == 0)
-			{
-				const Band *band = dynamic_cast<const Band *>(*i);
-
-				band->print();
-			}
-			else if ((*i)->getType().compare("Velg") == 0)
-			{
-				const Velg *velg = dynamic_cast<const Velg *>(*i);
-
-				velg->print();
-			}
-		}
-	}
-	if (this->getArtikels()->size() == 0)
-	{
-		cout << "Er zijn geen artikels." << endl;
-	}
-	system("pause");
-}
 
 void Bandencentrale::printClients() const
 {
@@ -297,6 +271,139 @@ void Bandencentrale::printClients() const
 		cout << "Er zijn geen klanten." << endl;
 	}
 	system("pause");
+}
+
+void Bandencentrale::printArticles(string s) const
+{
+	system("cls");
+
+	for (vector<Artikel*>::const_iterator i = this->getArtikels()->cbegin(); i != this->getArtikels()->cend(); ++i)
+	{
+
+		if ((*i)->getType().compare(s) == 0 || s.compare("All") == 0) {
+
+			if ((*i)->getType().compare("Band") == 0)
+			{
+				const Band *band = dynamic_cast<const Band *>(*i);
+
+				band->print();
+			}
+			else if ((*i)->getType().compare("Velg") == 0)
+			{
+				const Velg *velg = dynamic_cast<const Velg *>(*i);
+
+				velg->print();
+			}
+		}
+	}
+
+	if (this->getArtikels()->size() == 0)
+	{
+		cout << "Er zijn geen artikels." << endl;
+	}
+	system("pause");
+}
+
+void Bandencentrale::printSizes() const
+{
+	system("cls");
+
+	for (vector<Artikel*>::const_iterator i = this->getArtikels()->cbegin(); i != this->getArtikels()->cend(); ++i)
+	{
+		cout << (*i)->getDiameter() << " mm" << endl;
+	}
+
+	if (this->getArtikels()->size() == 0)
+	{
+		cout << "Er zijn geen artikels." << endl;
+	}
+
+	system("pause");
+}
+
+
+//search
+
+int Bandencentrale::searchArticles(string s)
+{
+	int index = 0;
+	for (vector<Artikel*>::const_iterator i = this->getArtikels()->cbegin(); i != this->getArtikels()->cend(); ++i)
+	{
+		if ((*i)->getNaam().compare(s) == 0)
+		{
+			return (index);
+		}
+		index++;
+	}
+
+	return -1;
+}
+
+int Bandencentrale::searchClients(string s)
+{
+	int index = 0;
+	for (vector<Klant*>::const_iterator i = this->getKlanten()->cbegin(); i != this->getKlanten()->cend(); ++i)
+	{
+		if ((*i)->getNaam().compare(s) == 0)
+		{
+			return (index);
+		}
+		index++;
+	}
+
+	return -1;
+}
+
+void Bandencentrale::removeArticle()
+{
+	string str;
+	int index = 0;
+	do
+	{
+		cout << "Naam van artikel dat u wilt verwijderen: ";
+		getline(std::cin, str);
+
+		index = searchArticles(str);
+
+		if (index >= 0)
+		{
+			Artikels.erase(Artikels.begin() + index);
+			cout << "Artikel verwijderd!";
+			system("pause");
+		}
+		else
+		{
+			cout << "Geen artikel gevonden. Wilt u opnieuw proberen? (j/n)";
+			getline(std::cin, str);
+		}
+	} while (str.compare("j") && index < 0);
+
+}
+
+void Bandencentrale::removeClient()
+{
+	string str;
+	int index = 0;
+	do
+	{
+		cout << "Naam van de klant die u wilt verwijderen: ";
+		getline(std::cin, str);
+
+		index = searchClients(str);
+
+		if (index >= 0)
+		{
+			Klanten.erase(Klanten.begin() + index);
+			cout << "Klant verwijderd!";
+			system("pause");
+		}
+		else
+		{
+			cout << "Geen klant gevonden. Wilt u opnieuw proberen? (j/n)";
+			getline(std::cin, str);
+		}
+	} while (str.compare("j") && index < 0);
+
 }
 
 

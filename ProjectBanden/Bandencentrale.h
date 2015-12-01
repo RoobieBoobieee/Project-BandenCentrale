@@ -43,6 +43,15 @@ class Bandencentrale
 		//print
 		void printClients() const;
 		void printArticles(string optional = "All") const;
+		void printSizes() const;
+
+		//search
+		int searchArticles(string);
+		int searchClients(string);
+
+		//remove
+		void removeArticle();
+		void removeClient();
 
 	private:
 		string naam;
