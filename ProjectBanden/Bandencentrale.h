@@ -35,10 +35,11 @@ class Bandencentrale
 		void addClient(Klant * optional = NULL);
 
 		//setup
-		Klant * setupKlant();
+		Klant * setupKlant(Klant * optional = NULL);
 		void setupArtikel(Artikel *);
 		Artikel * setupBand();
 		Artikel * setupVelg();
+		Klant * setupBedrijfsklant();
 
 		//print
 		void printClients() const;

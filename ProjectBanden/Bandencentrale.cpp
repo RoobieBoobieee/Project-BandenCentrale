@@ -94,7 +94,35 @@ void Bandencentrale::addArtikel(Artikel* a)
 void Bandencentrale::addClient(Klant * k)
 {
 	if (k == NULL) {
-		k = setupKlant();
+		int choice = 0;
+
+		do
+		{
+			cout << "Wilt u een gewone (1) of een bedrijfs (2) klant toevoegen? (3 om te stoppen)" << endl;
+			cout << "> ";
+			cin >> choice;
+			cin.get();
+			switch (choice)
+			{
+			case 1:
+				Klant * k = new Klant;
+				Klanten.push_back(setupKlant(k));
+				break;
+
+			case 2:
+				Klanten.push_back(setupBedrijfsklant());
+				break;
+
+			case 3:
+				break;
+
+			default:
+				cout << "Ongeldige keuze ..." << endl;
+				break;
+			}
+
+		} while (choice < 1 && choice > 3);
+
 	}
 	Klanten.push_back(k);
 }
@@ -192,59 +220,65 @@ Artikel * Bandencentrale::setupVelg()
 	return(b);
 }
 
-Klant * Bandencentrale::setupKlant()
+Klant * Bandencentrale::setupKlant(Klant * k)
 {
-
-	Bedrijfsklant * k = new Bedrijfsklant; //VRAGEN
-
 	string str;
 	int intgr;
 
 	cout << "Naam: ";
 	getline(std::cin, str);
 	k->setNaam(str);
-			
+
 	cout << "Adres: ";
 	getline(std::cin, str);
 	k->setAdres(str);
-			
+
 	cout << "Korting: ";
 	cin >> intgr;
 	cin.get();
 	k->setKorting(intgr);
-			
+
 	cout << "Bedrijf (leeg voor geen): ";
 	getline(std::cin, str);
 	k->setBedrijf(str);
-			
+
 	cout << "Korting 2: ";
 	cin >> intgr;
 	cin.get();
 	k->setKorting2(intgr);
-			
-	if (k->getBedrijf().compare(""))
-	{
+
+	return (k);
+}
+
+
+Klant * Bandencentrale::setupBedrijfsklant()
+{
+		Klant * k = new Bedrijfsklant;
+
+		this->setupKlant(k);
+
 		Bedrijfsklant *bedrijfsklant = dynamic_cast<Bedrijfsklant *>(k);
-						
+
+		string str;
+		int intgr;
+
 		cout << "BTW Nummer: ";
 		getline(std::cin, str);
 		bedrijfsklant->setBTWnummer(str);
-						
+
 		cout << "Volumekorting: ";
 		cin >> intgr;
 		cin.get();
 		bedrijfsklant->setVolumekorting(intgr);
-						
+
 		cout << "Bedrijfskorting: ";
 		cin >> intgr;
 		cin.get();
 		bedrijfsklant->setBedrijfskorting(intgr);
 
-		return bedrijfsklant;
-	}
-
-	return k;
+		return (dynamic_cast<Klant *>(bedrijfsklant));
 }
+
 
 
 //print

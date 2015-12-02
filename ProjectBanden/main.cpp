@@ -3,9 +3,6 @@
 
 int login();
 int articlesmenu();
-int addarticle();
-int addtire();
-int addrim();
 int showarticles(string);
 
 using std::cout;
@@ -59,6 +56,14 @@ int main()
 
 		case 5:
 			BC.addClient();
+			break;
+
+		case 6:
+			BC.removeClient();
+			break;
+
+		case 7:
+			
 			break;
 
 		case 9: 
@@ -167,137 +172,6 @@ int articlesmenu()
 			break;
 		}
 	} while (choice != 5);
-
-	return 1;
-}
-
-int addarticle()
-{
-	int choice = 0;
-
-	do
-	{
-		cout << "Wilt u een band (1) of een velg (2) toevoegen? " << endl;
-		cout << "> ";
-		cin >> choice;
-		cin.get();
-		switch (choice)
-		{
-		case 1:
-			choice = addtire();
-			break;
-		case 2:
-			choice = addrim();
-			break;
-		case 3:
-			return 0;
-			break;
-		default:
-			cout << "Ongeldige keuze ..." << endl;
-			cin.get();
-			system("pause");
-			break;
-		}
-	} while (choice < 1 && choice > 3);
-
-
-	return 1;
-}
-
-int addtire()
-{
-	Band* article = new Band;
-
-	string str;
-	double dbl;
-	int intgr;
-
-	cout << "Naam: ";
-	getline(std::cin, str);
-	article->setNaam(str);
-
-	cout << "Fabrikant: ";
-	getline(cin, str);
-	article->setFabrikant(str);
-
-	cout << "Prijs: ";
-	cin >> dbl;
-	article->setPrijs(dbl);
-
-	cout << "Diameter (mm): ";
-	cin >> intgr;
-	article->setDiameter(intgr);
-
-	article->setType("Band");
-
-	cout << "Aantal: ";
-	cin >> intgr;
-	article->setAantal(intgr);
-
-	cout << "Breedte (mm): ";
-	cin >> intgr;
-	article->setBreedte(intgr);
-
-	cout << "Hoogte (mm): ";
-	cin >> intgr;
-	article->setHoogte(intgr);
-
-	cout << "Snelheidsindex: ";
-	cin >> str;
-	article->setSnelheidsindex(str);
-
-	cout << "Seizoen (Zomer=0; Winter = 1): ";
-	cin >> intgr;
-	article->setSeizoen(intgr);
-
-	BC.addArtikel(article);
-
-	return 1;
-}
-
-int addrim()
-{
-	Velg* article = new Velg;
-
-	string str;
-	double dbl;
-	int intgr;
-
-	cout << "Naam: ";
-	getline(cin, str);
-	article->setNaam(str);
-
-	cout << "Fabrikant: ";
-	getline(cin, str);
-	article->setFabrikant(str);
-
-	cout << "Prijs: " ;
-	cin >> dbl;
-	article->setPrijs(dbl);
-
-	cout << "Diameter (mm): " ;
-	cin >> intgr;
-	article->setDiameter(intgr);
-
-	article->setType("Velg");
-
-	cout << "Aantal: " << endl;
-	cin >> intgr;
-	article->setDiameter(intgr);
-
-	cout << "Breedte (mm): ";
-	cin >> intgr;
-	article->setBreedte(intgr);
-
-	cout << "Kleur: ";
-	cin >> str;
-	article->setKleur(str);
-
-	cout << "Aluminium: (Nee=0; Ja=1)" << endl;
-	cin >> intgr;
-	article->setAluminium(intgr);
-
-	BC.addArtikel(article);
 
 	return 1;
 }

@@ -107,7 +107,6 @@ void Artikel::setAantal(int i)
 
 void Artikel::print() const
 {
-	//TODO: VRAGEN : THIS of VARIABLE 
 	cout << std::setw(20) << "Naam: ";
 	cout << std::setw(20) << this->getNaam();
 	cout << "| " << std::setw(18) << "Fabrikant: ";
