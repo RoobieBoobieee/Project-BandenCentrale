@@ -35,7 +35,7 @@ class Bandencentrale
 		void addClient(Klant * optional = NULL);
 
 		//setup
-		Klant * setupKlant(Klant * optional = NULL);
+		Klant * setupKlant(Klant * optional = new Klant);
 		void setupArtikel(Artikel *);
 		Artikel * setupBand();
 		Artikel * setupVelg();

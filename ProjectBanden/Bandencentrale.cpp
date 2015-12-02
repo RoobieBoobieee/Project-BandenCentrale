@@ -105,8 +105,7 @@ void Bandencentrale::addClient(Klant * k)
 			switch (choice)
 			{
 			case 1:
-				Klant * k = new Klant;
-				Klanten.push_back(setupKlant(k));
+				Klanten.push_back(setupKlant());
 				break;
 
 			case 2:
