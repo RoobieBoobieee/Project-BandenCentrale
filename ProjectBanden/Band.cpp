@@ -9,37 +9,39 @@ Band::~Band()
 {
 }
 
+
 //getters
 int Band::getBreedte() const
 {
-	return Breedte;
+	return this->Breedte;
 }
 
 int Band::getHoogte() const
 {
-	return Hoogte;
+	return this->Hoogte;
 }
 
 string Band::getSnelheidsindex() const
 {
-	return Snelheidsindex;
+	return this->Snelheidsindex;
 }
 
 string Band::getSeizoen() const
 {
-	return Seizoen;
+	return this->Seizoen;
 }
+
 
 //setters
 void Band::setBreedte(int i)
 {
 	if (i < 0)
 	{
-		Breedte = 0;
+		this->Breedte = 0;
 	}
 	else
 	{
-		Breedte = i;
+		this->Breedte = i;
 	}
 }
 
@@ -47,33 +49,33 @@ void Band::setHoogte(int i)
 {
 	if (i < 0)
 	{
-		Hoogte = 0;
+		this->Hoogte = 0;
 	}
 	else
 	{
-		Hoogte = i;
+		this->Hoogte = i;
 	}
 }
 
 void Band::setSnelheidsindex(string s)
 {
-	Snelheidsindex = s;
+	this->Snelheidsindex = s;
 }
 
 void Band::setSeizoen(int i)
 {
 	if (i == 1)
 	{
-		Seizoen = "Winter";
+		this->Seizoen = "Winter";
 	}
 	else
 	{
-		Seizoen = "Zomer";
+		this->Seizoen = "Zomer";
 	}
 }
 
-//print
 
+//print
 void Band::print() const
 {
 	Artikel::print();

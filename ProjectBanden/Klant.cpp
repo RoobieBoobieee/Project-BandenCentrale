@@ -4,77 +4,80 @@ Klant::Klant()
 {
 }
 
-
 Klant::~Klant()
 {
 }
 
+
+//getters
 string Klant::getNaam() const
 {
-	return Naam;
+	return this->Naam;
 }
 
 string Klant::getAdres() const
 {
-	return Adres;
+	return this->Adres;
 }
 
 double Klant::getKorting() const
 {
-	return Korting;
+	return this->Korting;
 }
 
 string Klant::getBedrijf() const
 {
-	return Bedrijf;
+	return this->Bedrijf;
 }
 
 double Klant::getKorting2() const
 {
-	return Korting2;
+	return this->Korting2;
 }
 
+
+//setters
 void Klant::setNaam(string s)
 {
-	Naam = s;
+	this->Naam = s;
 }
 
 void Klant::setAdres(string s)
 {
-	Adres = s;
+	this->Adres = s;
 }
 
 void Klant::setKorting(int i)
 {
 	if (i < 0 || i > 100)
 	{
-		Korting = 0;
+		this->Korting = 0;
 	}
 	else
 	{
-		Korting = (i / 100);
+		this->Korting = (i / 100);
 	}
 }
 
 void Klant::setBedrijf(string s)
 {
-	Bedrijf = s;
+	this->Bedrijf = s;
 }
 
 void Klant::setKorting2(int i)
 {
 	if (i < 0 || i > 100)
 	{
-		Korting2 = 0;
+		this->Korting2 = 0;
 	}
 	else
 	{
-		Korting2 = (i / 100);
+		this->Korting2 = (i / 100);
 	}
 }
 
-//print
 
+//print
 void Klant::print() const
 {
 	cout << std::setw(20) << "Naam: ";

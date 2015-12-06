@@ -3,7 +3,6 @@
 
 int login();
 int articlesmenu();
-int showarticles(string);
 
 using std::cout;
 using std::cin;
@@ -21,6 +20,7 @@ int main()
 	do
 	{
 		system("cls");
+
 		cout << "##############################################################################" << endl;
 		cout << "#                                                            Logged In As: " << id << " #" << endl;
 		cout << "#    1. Artikels Bekijken                                                    #" << endl;
@@ -34,8 +34,10 @@ int main()
 		cout << "#                                                                            #" << endl;
 		cout << "##############################################################################" << endl;
 		cout << "> ";
+
 		cin >> keuze;
 		cin.get();
+
 		switch (keuze)
 		{
 		case 1:
@@ -72,7 +74,6 @@ int main()
 
 		default: 
 			cout << "Ongeldige keuze ..." << endl;
-			cin.get();
 			system("pause");
 			break;
 
@@ -89,6 +90,7 @@ int login()
 	do
 	{
 		system("cls");
+
 		cout << "##############################################################################" << endl;
 		cout << "#                                                                            #" << endl;
 		cout << "#    1. Eigenaar                                                             #" << endl;
@@ -97,26 +99,28 @@ int login()
 		cout << "#                                                                            #" << endl;
 		cout << "##############################################################################" << endl;
 		cout << "> ";
+
 		cin >> id;
 		cin.get();
+
 		switch (id)
 		{
-		case 1:
-			return 1;
-			break;
+			case 1:
+				return 1;
+				break;
 
-		case 2:
-			return 2;
-			break;
+			case 2:
+				return 2;
+				break;
+	
+			case 9:
+				cout << "Programma stoppen ..." << endl;
+				system("pause");
+				exit(1);
 
-		case 9:
-			cout << "Programma stoppen ..." << endl;
-			system("pause");
-			exit(1);
-
-		default:
-			cout << "Ongeldige keuze" << endl;
-			break;
+			default:
+				cout << "Ongeldige keuze" << endl;
+				break;
 
 		}
 	} while (1);
@@ -132,6 +136,7 @@ int articlesmenu()
 	do
 	{
 		system("cls");
+
 		cout << "##############################################################################" << endl;
 		cout << "#                                                                            #" << endl;
 		cout << "#    1. Alle Artikels Bekijken                                               #" << endl;
@@ -143,33 +148,35 @@ int articlesmenu()
 		cout << "#                                                                            #" << endl;
 		cout << "##############################################################################" << endl;
 		cout << "> ";
+
 		cin >> choice;
 		cin.get();
+
 		switch (choice)
 		{
-		case 1:
-			BC.printArticles();
-			break;
-		case 2:
-			BC.printArticles("Band");
-			break;
-		case 3:
-			BC.printArticles("Velg");
-			break;
-		case 4:
-			BC.printSizes();
-			break;
-		case 5:
-			return 0;
-		case 9:
-			cout << "Programma stoppen ..." << endl;
-			system("pause");
-			exit(1);
-		default:
-			cout << "Ongeldige keuze ..." << endl;
-			cin.get();
-			system("pause");
-			break;
+			case 1:
+				BC.printArticles();
+				break;
+			case 2:
+				BC.printArticles("Band");
+				break;
+			case 3:
+				BC.printArticles("Velg");
+				break;
+			case 4:
+				BC.printSizes();
+				break;
+			case 5:
+				return 0;
+			case 9:
+				cout << "Programma stoppen ..." << endl;
+				system("pause");
+				exit(1);
+			default:
+				cout << "Ongeldige keuze ..." << endl;
+				cin.get();
+				system("pause");
+				break;
 		}
 	} while (choice != 5);
 

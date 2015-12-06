@@ -9,54 +9,56 @@ Velg::~Velg()
 {
 }
 
+
 //getters
 int Velg::getBreedte() const
 {
-	return Breedte;
+	return this->Breedte;
 }
 
 string Velg::getKleur() const
 {
-	return Kleur;
+	return this->Kleur;
 }
 
 bool Velg::getAluminium() const
 {
-	return Aluminium;
+	return this->Aluminium;
 }
+
 
 //setters
 void Velg::setBreedte(int i)
 {
 	if (i < 0)
 	{
-		Breedte = 0;
+		this->Breedte = 0;
 	}
 	else
 	{
-		Breedte = i;
+		this->Breedte = i;
 	}
 }
 
 void Velg::setKleur(string s)
 {
-	Kleur = s;
+	this->Kleur = s;
 }
 
 void Velg::setAluminium(int i)
 {
 	if (i == 1)
 	{
-		Aluminium = true;
+		this->Aluminium = true;
 	}
 	else
 	{
-		Aluminium = false;
+		this->Aluminium = false;
 	}
 }
 
-//print
 
+//print
 void Velg::print() const
 {
 	Artikel::print();

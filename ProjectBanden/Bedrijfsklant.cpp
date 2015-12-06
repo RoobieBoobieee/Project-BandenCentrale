@@ -4,41 +4,43 @@ Bedrijfsklant::Bedrijfsklant()
 {
 }
 
-
 Bedrijfsklant::~Bedrijfsklant()
 {
 }
 
+
+//getters
 string Bedrijfsklant::getBTWnummer() const
 {
-	return BTWnummer;
+	return this->BTWnummer;
 }
 
 double Bedrijfsklant::getVolumekorting() const
 {
-	return Volumekorting;
+	return this->Volumekorting;
 }
 
 double Bedrijfsklant::getBedrijfskorting() const
 {
-	return Bedrijfskorting;
+	return this->Bedrijfskorting;
 }
 
+
+//setters
 void Bedrijfsklant::setBTWnummer(string s)
 {
-	BTWnummer = s;
+	this->BTWnummer = s;
 }
 
-// kortingen worden rationaal opgeslagen voor later makkelijker met te rekenen
-void Bedrijfsklant::setVolumekorting(int i)
+void Bedrijfsklant::setVolumekorting(int i) // kortingen worden rationaal opgeslagen voor later makkelijker met te rekenen
 {
 	if (i < 0 || i > 100)
 	{
-		Volumekorting = 0;
+		this->Volumekorting = 0;
 	}
 	else
 	{
-		Volumekorting = (i/100);
+		this->Volumekorting = (i/100);
 	}
 }
 
@@ -46,16 +48,16 @@ void Bedrijfsklant::setBedrijfskorting(int i)
 {
 	if (i < 0 || i > 100)
 	{
-		Bedrijfskorting = 0;
+		this->Bedrijfskorting = 0;
 	}
 	else
 	{
-		Bedrijfskorting = (i / 100);
+		this->Bedrijfskorting = (i / 100);
 	}
 }
 
-//print
 
+//print
 void Bedrijfsklant::print() const
 {
 	Klant::print();

@@ -12,58 +12,59 @@ Artikel::~Artikel()
 {
 }
 
+
 //getters
 string Artikel::getNaam() const
 {
-	return Naam;
+	return this->Naam;
 }
 
 string Artikel::getFabrikant() const
 {
-	return Fabrikant;
+	return this->Fabrikant;
 }
 
 double Artikel::getPrijs() const
 {
-	return Prijs;
+	return this->Prijs;
 }
 
 int Artikel::getDiameter() const
 {
-	return Diameter;
+	return this->Diameter;
 }
 
 string Artikel::getType() const
 {
-	return Type;
+	return this->Type;
 }
 
 int Artikel::getAantal() const
 {
-	return Aantal;
+	return this->Aantal;
 }
 
 
 //setters
 void Artikel::setNaam(string s)
 {
-	Naam = s;
+	this->Naam = s;
 }
 
 void Artikel::setFabrikant(string s)
 {
-	Fabrikant = s;
+	this->Fabrikant = s;
 }
 
 void Artikel::setPrijs(double d)
 {
 	if (d < 0) 
 	{
-		Prijs = 0;
+		this->Prijs = 0;
 	}
 	else 
 	{
-		Prijs = d;
+		this->Prijs = d;
 	}
 }
 
@@ -71,11 +72,11 @@ void Artikel::setDiameter(int i)
 {
 	if (i < 0)
 	{
-		Diameter = 0;
+		this->Diameter = 0;
 	}
 	else
 	{
-		Diameter = i;
+		this->Diameter = i;
 	}
 }
 
@@ -84,11 +85,11 @@ void Artikel::setType(string s)
 	// Just to be sure. Gebruiker kan hier normaal niets verkeerd doen aangezien programma deze prop altijd invult. 
 	if (s.compare("Velg") == 0)
 	{
-		Type = s;
+		this->Type = s;
 	}
 	else
 	{
-		Type = "Band";
+		this->Type = "Band";
 	}
 }
 
@@ -96,11 +97,11 @@ void Artikel::setAantal(int i)
 {
 	if (i < 0)
 	{
-		Aantal = 0;
+		this->Aantal = 0;
 	}
 	else
 	{
-		Aantal = i;
+		this->Aantal = i;
 	}
 }
 

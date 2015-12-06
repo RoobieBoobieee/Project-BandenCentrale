@@ -27,8 +27,8 @@ class Bandencentrale
 		//setters
 		void setNaam(string);
 		void setAdres(string);
-		void setKlanten(vector<Klant*>);  //wordt nog niet gebruikt
-		void setArtikels(vector<Artikel*>);  //wordt nog niet gebruikt
+		void setKlanten(vector<Klant*>);
+		void setArtikels(vector<Artikel*>);
 
 		//add
 		void addArtikel(Artikel * optional = NULL);
@@ -55,7 +55,7 @@ class Bandencentrale
 		void removeClient();
 
 	private:
-		string naam;
+		string Naam;
 		string Adres;
 		vector<Klant*> Klanten;
 		vector<Artikel*> Artikels;

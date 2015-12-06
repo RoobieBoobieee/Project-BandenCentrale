@@ -28,7 +28,7 @@ class Factuur
 		//setters
 		void setFactuurnummer(int);
 		void setKlant(Klant *);
-		void setArtikels(vector<Artikel*>); //wordt nog niet gebruikt
+		void setArtikels(vector<Artikel*>);
 		void setTotaalprijs(double);
 		void setKorting(int);
 		void addArtikel(Artikel *);
@@ -42,6 +42,6 @@ class Factuur
 		double Korting;
 
 		//setters
-		void addTotaalprijs(double);//totaalprijs wordt intern berekend zodat er niet gefoefeld kan worden
+		void addTotaalprijs(double); //totaalprijs wordt intern berekend zodat er niet gefoefeld kan worden
 };
 

@@ -34,7 +34,6 @@ class Artikel
 		void setType(string);
 		void setAantal(int);
 
-
 		//print
 		void print() const;
 

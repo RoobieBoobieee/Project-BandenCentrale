@@ -13,19 +13,18 @@ Bandencentrale::~Bandencentrale()
 //getters
 string Bandencentrale::getNaam() const 
 {
-	return Bandencentrale::naam;
+	return this->Naam;
 }
 
 string Bandencentrale::getAdres() const
 {
-	return string();
+	return this->Adres;
 }
 
 vector<Klant*> const* Bandencentrale::getKlanten() const
 {
 	return &Klanten;
 }
-
 
 vector<Artikel*> const* Bandencentrale::getArtikels() const
 {
@@ -34,25 +33,28 @@ vector<Artikel*> const* Bandencentrale::getArtikels() const
 
 
 //setters
-void Bandencentrale::setNaam(std::string n)
+void Bandencentrale::setNaam(std::string s)
 {
-	Bandencentrale::naam = n;
+	this->Naam = s;
 }
 
-void Bandencentrale::setAdres(string)
+void Bandencentrale::setAdres(string s)
 {
+	this->Adres = s;
 }
 
 void Bandencentrale::setKlanten(vector<Klant*> v)
 {
+	this->Klanten = v;
 }
 
 void Bandencentrale::setArtikels(vector<Artikel*> v)
 {
+	this->Artikels = v;
 }
 
-//add
 
+//add
 void Bandencentrale::addArtikel(Artikel* a)
 {
 	if (a == NULL) {
@@ -249,7 +251,6 @@ Klant * Bandencentrale::setupKlant(Klant * k)
 	return (k);
 }
 
-
 Klant * Bandencentrale::setupBedrijfsklant()
 {
 		Klant * k = new Bedrijfsklant;
@@ -279,9 +280,7 @@ Klant * Bandencentrale::setupBedrijfsklant()
 }
 
 
-
 //print
-
 void Bandencentrale::printClients() const
 {
 	system("cls");
@@ -400,8 +399,9 @@ void Bandencentrale::removeArticle()
 
 		if (index >= 0)
 		{
+			delete * (Artikels.begin() + index);
 			Artikels.erase(Artikels.begin() + index);
-			cout << "Artikel verwijderd!";
+			cout << "Artikel verwijderd!" << endl;
 			system("pause");
 		}
 		else
@@ -426,8 +426,9 @@ void Bandencentrale::removeClient()
 
 		if (index >= 0)
 		{
+			delete * (Klanten.begin() + index);
 			Klanten.erase(Klanten.begin() + index);
-			cout << "Klant verwijderd!";
+			cout << "Klant verwijderd!" << endl;
 			system("pause");
 		}
 		else
