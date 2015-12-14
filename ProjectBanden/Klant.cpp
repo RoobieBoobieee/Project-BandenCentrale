@@ -81,9 +81,7 @@ void Klant::setKorting2(int i)
 void Klant::print() const
 {
 	cout << std::setw(20) << "Naam: ";
-	cout << std::setw(20) << this->getNaam();
-	cout << "| " << std::setw(18) << "Bedrijf";
-	cout << std::setw(20) << this->getBedrijf() << endl;
+	cout << std::setw(20) << this->getNaam() << endl;
 
 	cout << std::setw(20) << "Adres:";
 	cout << std::setw(60) << this->getAdres() << endl;

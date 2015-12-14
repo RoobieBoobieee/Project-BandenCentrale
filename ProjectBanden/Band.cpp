@@ -31,6 +31,18 @@ string Band::getSeizoen() const
 	return this->Seizoen;
 }
 
+int Band::getSeizoenint() const
+{
+	if (this->Seizoen.compare("Winter") == 0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
 
 //setters
 void Band::setBreedte(int i)

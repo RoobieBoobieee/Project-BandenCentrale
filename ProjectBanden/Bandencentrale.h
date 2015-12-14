@@ -10,6 +10,19 @@
 using std::string;
 using std::vector;
 
+
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <cstdlib>
+
+using std::cerr;
+using std::endl;
+using std::ios;
+
+
+
+
 class Bandencentrale
 {
 	public:
@@ -35,7 +48,7 @@ class Bandencentrale
 		void addClient(Klant * optional = NULL);
 
 		//setup
-		Klant * setupKlant(Klant * optional = new Klant);
+		Klant * setupKlant();
 		void setupArtikel(Artikel *);
 		Artikel * setupBand();
 		Artikel * setupVelg();
@@ -53,6 +66,9 @@ class Bandencentrale
 		//remove
 		void removeArticle();
 		void removeClient();
+
+		//read
+		void readData();
 
 	private:
 		string Naam;

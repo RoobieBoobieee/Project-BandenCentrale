@@ -63,10 +63,13 @@ void Bedrijfsklant::print() const
 	Klant::print();
 
 	cout << std::setw(20) << "BTW Nummer: ";
-	cout << std::setw(60) << this->getBTWnummer() << endl;
+	cout << std::setw(20) << this->getBTWnummer();
+	cout << "| " << std::setw(18) << "Bedrijf";
+	cout << std::setw(20) << this->getBedrijf() << endl;
 
 	cout << std::setw(20) << "Volume Korting: ";
 	cout << std::setw(20) << this->getKorting();
 	cout << "| " << std::setw(18) << "Bedrijfs Korting: ";
 	cout << std::setw(20) << this->getKorting2() << endl;
+
 }

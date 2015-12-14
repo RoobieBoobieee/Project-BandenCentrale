@@ -16,6 +16,7 @@ class Band :
 		int getHoogte() const;
 		string getSnelheidsindex() const;
 		string getSeizoen() const;
+		int getSeizoenint() const;
 	
 		//setters
 		void setBreedte(int);

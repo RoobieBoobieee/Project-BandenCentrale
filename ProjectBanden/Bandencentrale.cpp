@@ -84,7 +84,7 @@ void Bandencentrale::addArtikel(Artikel* a)
 				break;
 			}
 
-		} while (choice < 1 && choice > 3);
+		} while (choice < 1 || choice > 3);
 
 	}
 	else
@@ -122,10 +122,13 @@ void Bandencentrale::addClient(Klant * k)
 				break;
 			}
 
-		} while (choice < 1 && choice > 3);
+		} while (choice < 1 || choice > 3);
 
 	}
-	Klanten.push_back(k);
+	else 
+	{
+		Klanten.push_back(k);
+	}
 }
 
 //setup
@@ -189,6 +192,16 @@ Artikel * Bandencentrale::setupBand()
 	cin >> intgr;
 	cin.get();
 	b->setSeizoen(intgr);
+
+	std::ofstream outCredit("data/banden.dat", ios::app | ios::binary);
+
+	if (!outCredit)
+	{
+		cerr << "File could not be opened." << endl;
+		exit(1);
+	}
+
+	outCredit.write(reinterpret_cast< const char * >(b), sizeof(Band));
 	
 	return(b);
 }
@@ -218,11 +231,23 @@ Artikel * Bandencentrale::setupVelg()
 	cin.get();
 	b->setAluminium(intgr);
 
+	std::ofstream outCredit("data/velgen.dat", ios::app | ios::binary);
+
+	if (!outCredit)
+	{
+		cerr << "File could not be opened." << endl;
+		exit(1);
+	} 
+
+	outCredit.write(reinterpret_cast< const char * >(b), sizeof(Velg));
+
 	return(b);
 }
 
-Klant * Bandencentrale::setupKlant(Klant * k)
+Klant * Bandencentrale::setupKlant()
 {
+	Klant* k = new Klant;
+
 	string str;
 	int intgr;
 
@@ -239,44 +264,79 @@ Klant * Bandencentrale::setupKlant(Klant * k)
 	cin.get();
 	k->setKorting(intgr);
 
-	cout << "Bedrijf (leeg voor geen): ";
-	getline(std::cin, str);
-	k->setBedrijf(str);
-
 	cout << "Korting 2: ";
 	cin >> intgr;
 	cin.get();
 	k->setKorting2(intgr);
+
+	std::ofstream outCredit("data/klanten.dat", ios::app | ios::binary);
+
+	if (!outCredit)
+	{
+		cerr << "File could not be opened." << endl;
+		system("pause");
+		exit(1);
+	}
+
+	outCredit.write(reinterpret_cast< const char * >(k), sizeof(Klant));
 
 	return (k);
 }
 
 Klant * Bandencentrale::setupBedrijfsklant()
 {
-		Klant * k = new Bedrijfsklant;
-
-		this->setupKlant(k);
-
-		Bedrijfsklant *bedrijfsklant = dynamic_cast<Bedrijfsklant *>(k);
+		Bedrijfsklant* k = new Bedrijfsklant;
 
 		string str;
 		int intgr;
 
+		cout << "Naam: ";
+		getline(std::cin, str);
+		k->setNaam(str);
+
+		cout << "Adres: ";
+		getline(std::cin, str);
+		k->setAdres(str);
+
+		cout << "Korting: ";
+		cin >> intgr;
+		cin.get();
+		k->setKorting(intgr);
+
+		cout << "Korting 2: ";
+		cin >> intgr;
+		cin.get();
+		k->setKorting2(intgr);
+
+		cout << "Bedrijf: ";
+		getline(std::cin, str);
+		k->setBedrijf(str);
+
 		cout << "BTW Nummer: ";
 		getline(std::cin, str);
-		bedrijfsklant->setBTWnummer(str);
+		k->setBTWnummer(str);
 
 		cout << "Volumekorting: ";
 		cin >> intgr;
 		cin.get();
-		bedrijfsklant->setVolumekorting(intgr);
+		k->setVolumekorting(intgr);
 
 		cout << "Bedrijfskorting: ";
 		cin >> intgr;
 		cin.get();
-		bedrijfsklant->setBedrijfskorting(intgr);
+		k->setBedrijfskorting(intgr);
 
-		return (dynamic_cast<Klant *>(bedrijfsklant));
+		std::ofstream outCredit("data/bedrijfsklanten.dat", ios::app | ios::binary);
+
+		if (!outCredit)
+		{
+			cerr << "File could not be opened." << endl;
+			exit(1);
+		}
+
+		outCredit.write(reinterpret_cast< const char * >(k), sizeof(Bedrijfsklant));
+
+		return(k);
 }
 
 
@@ -285,17 +345,20 @@ void Bandencentrale::printClients() const
 {
 	system("cls");
 
-	for (vector<Klant*>::const_iterator i = this->getKlanten()->cbegin(); i != this->getKlanten()->cend(); ++i)
+ 	for (vector<Klant*>::const_iterator i = this->getKlanten()->cbegin(); i != this->getKlanten()->cend(); ++i)
 	{
 		
 		if ((*i)->getBedrijf().compare("") == 0) {
 			(*i)->print();
+
 		} 
 		else
 		{
 			const Bedrijfsklant *bedrijfsklant = dynamic_cast<const Bedrijfsklant *>(*i);
 			bedrijfsklant->print();
 		}
+
+		cout << "##############################################################################" << endl;
 	}
 
 	if (this->getKlanten()->size() == 0)
@@ -386,6 +449,9 @@ int Bandencentrale::searchClients(string s)
 	return -1;
 }
 
+
+//remove 
+
 void Bandencentrale::removeArticle()
 {
 	string str;
@@ -440,4 +506,149 @@ void Bandencentrale::removeClient()
 
 }
 
+
+// inlezen
+
+void Bandencentrale::readData()
+{
+	//velgen
+
+	std::ifstream inVelgen("data/velgen.dat", ios::binary);
+
+	if (!inVelgen)
+	{
+		cerr << "File could not be opened. - velgen" << endl;
+	}
+	else {
+
+		Velg * v = new Velg;
+
+		inVelgen.read(reinterpret_cast<char *>(v), sizeof(Velg));
+
+		while (inVelgen && !inVelgen.eof())
+		{
+
+			Velg * nv = new Velg;
+
+			nv->setBreedte(v->getBreedte());
+			nv->setKleur(v->getKleur());
+			nv->setAluminium(v->getAluminium());
+
+			Artikel *a = dynamic_cast<Artikel *>(v);
+
+			nv->setNaam(a->getNaam());
+			nv->setFabrikant(a->getFabrikant());
+			nv->setPrijs(a->getPrijs());
+			nv->setDiameter(a->getDiameter());
+			nv->setType(a->getType());
+			nv->setAantal(a->getAantal());
+
+			this->addArtikel(nv);
+
+			inVelgen.read(reinterpret_cast<char *>(v), sizeof(Velg));
+		}
+	}
+
+	//banden
+
+	std::ifstream inBanden("data/banden.dat", ios::binary);
+
+	if (!inBanden)
+	{
+		cerr << "File could not be opened. - banden" << endl;
+	}
+	else {
+
+		Band * b = new Band;
+
+		inBanden.read(reinterpret_cast<char *>(b), sizeof(Band));
+
+		while (inBanden && !inBanden.eof())
+		{
+
+			Band * nb = new Band;
+
+			nb->setBreedte(b->getBreedte());
+			nb->setHoogte(b->getHoogte());
+			nb->setSnelheidsindex(b->getSnelheidsindex());
+			nb->setSeizoen(b->getSeizoenint());
+
+			Artikel *a = dynamic_cast<Artikel *>(b);
+
+			nb->setNaam(b->getNaam());
+			nb->setFabrikant(a->getFabrikant());
+			nb->setPrijs(a->getPrijs());
+			nb->setDiameter(a->getDiameter());
+			nb->setType(a->getType());
+			nb->setAantal(a->getAantal());
+
+			this->addArtikel(nb);
+
+			inBanden.read(reinterpret_cast<char *>(b), sizeof(Band));
+		}
+	}
+
+	//klanten
+
+	std::ifstream inKlanten("data/klanten.dat", ios::binary);
+
+	if (!inKlanten)
+	{
+		cerr << "File could not be opened. - banden" << endl;
+	}
+	else {
+
+		Klant * k = new Klant;
+
+		inKlanten.read(reinterpret_cast<char *>(k), sizeof(Klant));
+
+		while (inKlanten && !inKlanten.eof())
+		{
+
+			this->addClient(k);
+
+			k = new Klant;
+
+			inKlanten.read(reinterpret_cast<char *>(k), sizeof(Band));
+		}
+	}
+
+	//bedrijfsklanten
+
+	std::ifstream inCredit("data/bedrijfsklanten.dat", ios::binary);
+
+	if (!inCredit)
+	{
+		cerr << "File could not be opened. - banden" << endl;
+	}
+	else {
+
+		Bedrijfsklant * b = new Bedrijfsklant;
+
+		inCredit.read(reinterpret_cast<char *>(b), sizeof(Bedrijfsklant));
+
+		while (inCredit && !inCredit.eof())
+		{
+
+			Bedrijfsklant * nb = new Bedrijfsklant;
+
+			nb->setBTWnummer(b->getBTWnummer());
+			nb->setVolumekorting(b->getVolumekorting());
+			nb->setBedrijfskorting(b->getBedrijfskorting());
+
+			Klant *j = dynamic_cast<Klant *>(b);
+
+			nb->setNaam(j->getNaam());
+			nb->setAdres(j->getAdres());
+			nb->setKorting(j->getKorting());
+			nb->setBedrijf(j->getBedrijf());
+			nb->setKorting2(j->getKorting2());
+
+			this->addClient(nb);
+
+			inCredit.read(reinterpret_cast<char *>(b), sizeof(Bedrijfsklant));
+		}
+	}
+
+}
 

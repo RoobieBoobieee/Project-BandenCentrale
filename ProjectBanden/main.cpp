@@ -12,7 +12,7 @@ Bandencentrale BC;
 
 int main()
 {
-
+	
 	int id = login();
 	
 	int keuze = 0;
@@ -30,6 +30,7 @@ int main()
 		cout << "#    5. Klant Toevoegen                                                      #" << endl;
 		cout << "#    6. Klant Verwijderen                                                    #" << endl;
 		cout << "#    7. Factuuur Aanmaken                                                    #" << endl;
+		cout << "#    8. uitlezen test                                                    #" << endl;
 		cout << "#    9. Stoppen                                                              #" << endl;
 		cout << "#                                                                            #" << endl;
 		cout << "##############################################################################" << endl;
@@ -65,7 +66,11 @@ int main()
 			break;
 
 		case 7:
-			
+
+			break;
+
+		case 8:
+			BC.readData();
 			break;
 
 		case 9: 
