@@ -31,7 +31,7 @@ class Band :
 	private:
 		int Breedte;
 		int Hoogte;
-		char Snelheidsindex[3];
-		char Seizoen[5];
+		char Snelheidsindex[5];
+		char Seizoen[6];
 };
 

@@ -31,6 +31,7 @@ int main()
 		cout << "#    5. Klant Toevoegen                                                      #" << endl;
 		cout << "#    6. Klant Verwijderen                                                    #" << endl;
 		cout << "#    7. Factuuur Aanmaken                                                    #" << endl;
+		cout << "#    8. Facturen Bekijken                                                    #" << endl;
 		cout << "#    9. Stoppen                                                              #" << endl;
 		cout << "#                                                                            #" << endl;
 		cout << "##############################################################################" << endl;
@@ -66,7 +67,11 @@ int main()
 			break;
 
 		case 7:
+			BC.addFactuur();
+			break;
 
+		case 8:
+			BC.printFacturen();
 			break;
 
 		case 9: 

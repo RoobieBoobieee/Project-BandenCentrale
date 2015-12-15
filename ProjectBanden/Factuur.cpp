@@ -78,6 +78,38 @@ void Factuur::addArtikel(Artikel * a)
 	this->Artikels.push_back(a);
 }
 
+void Factuur::print()
+{
+	cout << std::setw(20) << "Factuur #: ";
+	cout << std::setw(20) << this->getFactuurnummer() << endl;
+	cout << std::setw(20) << "Klant: " << endl;
+
+	this->getKlant()->print();
+
+	cout << std::setw(20) << "Artikels: " << endl;
+
+	for (vector<Artikel*>::iterator i = this->getArtikels()->begin(); i != this->getArtikels()->end(); ++i)
+	{
+		if (strcmp((*i)->getType(), "Band") == 0)
+		{
+			Band *band = dynamic_cast<Band *>(*i);
+			band->print();
+		}
+		else if (strcmp((*i)->getType(), "Velg") == 0)
+		{
+			Velg *velg = dynamic_cast<Velg *>(*i);
+			velg->print();
+		}
+	}
+
+	cout << endl;
+	cout << std::setw(20) << "Totaal Prijs: ";
+	cout << std::setw(20) << this->getTotaalprijs();
+	cout << std::setw(20) << "Korting: ";
+	cout << std::setw(20) << this->getKorting() << endl;
+	cout << "##############################################################################" << endl;
+}
+
 
 //private setters 
 void Factuur::addTotaalprijs(double d)

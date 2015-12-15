@@ -42,6 +42,6 @@ class Artikel
 		char Fabrikant[20];
 		double Prijs;
 		int Diameter;
-		char Type[4];
+		char Type[5];
 		int Aantal;
 };

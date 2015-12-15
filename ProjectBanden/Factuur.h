@@ -33,6 +33,9 @@ class Factuur
 		void setKorting(int);
 		void addArtikel(Artikel *);
 
+		//print
+		void print();
+
 
 	private:
 		int Factuurnummer;

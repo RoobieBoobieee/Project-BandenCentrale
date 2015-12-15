@@ -33,10 +33,11 @@ class Bandencentrale
 		virtual ~Bandencentrale();
 
 		//getters
-		 char* getNaam() ;
-		 char* getAdres() ;
+		char* getNaam() ;
+		char* getAdres() ;
 		vector<Klant*>  * getKlanten() ;
-		vector<Artikel*>  * getArtikels() ;
+		vector<Artikel*>  * getArtikels();
+		vector<Factuur*>  * getFacturen();
 		
 		//setters
 		void setNaam(char[]);
@@ -47,6 +48,7 @@ class Bandencentrale
 		//add
 		void addArtikel(Artikel * optional = NULL);
 		void addClient(Klant * optional = NULL);
+		void addFactuur(Factuur * optional = NULL);
 
 		//setup
 		Klant * setupKlant();
@@ -61,6 +63,7 @@ class Bandencentrale
 		void printClients();
 		void printArticles(char[]);
 		void printSizes();
+		void printFacturen();
 
 		//search
 		int searchArticles(char[]);
