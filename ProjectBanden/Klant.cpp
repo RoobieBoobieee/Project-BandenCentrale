@@ -1,7 +1,19 @@
 #include "Klant.h"
 
+
+//constructor en deconstructor
 Klant::Klant()
 {
+}
+
+Klant::Klant(string n, string a, double k, string b, double k2)
+{
+	std::cout << "Constructed BedrijfsKlant()";
+	this->setNaam(n);
+	this->setAdres(a);
+	this->setKorting(k);
+	this->setKorting2(k2);
+	this->setBedrijf(b);
 }
 
 Klant::~Klant()
@@ -55,7 +67,7 @@ void Klant::setKorting(int i)
 	}
 	else
 	{
-		this->Korting = (i / 100);
+		this->Korting = ((double)i / 100);
 	}
 }
 
@@ -72,7 +84,7 @@ void Klant::setKorting2(int i)
 	}
 	else
 	{
-		this->Korting2 = (i / 100);
+		this->Korting2 = ((double)i / 100);
 	}
 }
 

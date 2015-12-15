@@ -3,6 +3,20 @@
 Bedrijfsklant::Bedrijfsklant()
 {
 }
+Bedrijfsklant::Bedrijfsklant(string n, string a, double k, string b, double k2, string btw, double v, double bk)
+{
+	std::cout << "Constructed BedrijfsKlant()";
+	this->setNaam(n);
+	this->setAdres(a);
+	this->setKorting(k);
+	this->setKorting2(k2);
+	this->setBedrijf(b);
+
+	this->setBTWnummer(btw);
+	this->setVolumekorting(v);
+	this->setBedrijfskorting(bk);
+}
+
 
 Bedrijfsklant::~Bedrijfsklant()
 {
@@ -40,7 +54,7 @@ void Bedrijfsklant::setVolumekorting(int i) // kortingen worden rationaal opgesl
 	}
 	else
 	{
-		this->Volumekorting = (i/100);
+		this->Volumekorting = ((double)i/100);
 	}
 }
 
@@ -52,7 +66,7 @@ void Bedrijfsklant::setBedrijfskorting(int i)
 	}
 	else
 	{
-		this->Bedrijfskorting = (i / 100);
+		this->Bedrijfskorting = ((double)i / 100);
 	}
 }
 

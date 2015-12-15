@@ -9,6 +9,7 @@ class Bedrijfsklant :
 	
 		//constructor & deconstructor
 		Bedrijfsklant();
+		Bedrijfsklant(string, string, double, string, double, string, double, double);
 		virtual ~Bedrijfsklant();
 	
 		//getters

@@ -4,6 +4,21 @@
 Velg::Velg()
 {
 }
+Velg::Velg(string n, string f, double p, int d, string t, int a, int b, string k, bool al)
+{
+	std::cout << "Constructed Velg()" << endl;
+
+	this->setNaam(n);
+	this->setFabrikant(f);
+	this->setPrijs(p);
+	this->setDiameter(d);
+	this->setType(t);
+	this->setAantal(a);
+	
+	this->setBreedte(b);
+	this->setKleur(k);
+	this->setAluminium(al);
+}
 
 Velg::~Velg()
 {

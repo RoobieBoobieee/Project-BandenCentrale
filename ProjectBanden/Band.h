@@ -9,6 +9,7 @@ class Band :
 
 		//constructor & deconstructor
 		Band();
+		Band(string, string, double, int, string, int, int, int, string, bool);
 		virtual ~Band();
 
 		//getters

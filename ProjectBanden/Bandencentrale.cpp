@@ -633,16 +633,16 @@ void Bandencentrale::readData()
 			Bedrijfsklant * nb = new Bedrijfsklant;
 
 			nb->setBTWnummer(b->getBTWnummer());
-			nb->setVolumekorting(b->getVolumekorting());
-			nb->setBedrijfskorting(b->getBedrijfskorting());
+			nb->setVolumekorting(int(b->getVolumekorting() * 100));
+			nb->setBedrijfskorting(int(b->getBedrijfskorting() * 100));
 
 			Klant *j = dynamic_cast<Klant *>(b);
 
 			nb->setNaam(j->getNaam());
 			nb->setAdres(j->getAdres());
-			nb->setKorting(j->getKorting());
+			nb->setKorting(int(j->getKorting() * 100));
 			nb->setBedrijf(j->getBedrijf());
-			nb->setKorting2(j->getKorting2());
+			nb->setKorting2(int(j->getKorting2() * 100));
 
 			this->addClient(nb);
 

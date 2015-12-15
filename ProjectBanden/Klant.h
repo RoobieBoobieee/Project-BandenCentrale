@@ -16,6 +16,7 @@ class Klant
 
 		//constructor en deconstructor
 		Klant();
+		Klant(string, string, double, string, double);
 		virtual ~Klant();
 
 		//getters

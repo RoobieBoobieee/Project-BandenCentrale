@@ -9,6 +9,7 @@ class Velg :
 	
 		//constructor & deconstructor
 		Velg();
+		Velg(string, string, double, int, string, int, int, string, bool);
 		virtual ~Velg();
 	
 		//getters
