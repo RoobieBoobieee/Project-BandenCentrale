@@ -7,14 +7,15 @@
 #include "Band.h"
 #include "Velg.h"
 
-using std::string;
-using std::vector;
+#include "Factuur.h"
 
 
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <cstdlib>
+
+using std::vector;
 
 using std::cerr;
 using std::endl;
@@ -32,14 +33,14 @@ class Bandencentrale
 		virtual ~Bandencentrale();
 
 		//getters
-		string getNaam() const;
-		string getAdres() const;
-		vector<Klant*> const * getKlanten() const;
-		vector<Artikel*> const * getArtikels() const;
+		 char* getNaam() ;
+		 char* getAdres() ;
+		vector<Klant*>  * getKlanten() ;
+		vector<Artikel*>  * getArtikels() ;
 		
 		//setters
-		void setNaam(string);
-		void setAdres(string);
+		void setNaam(char[]);
+		void setAdres(char[]);
 		void setKlanten(vector<Klant*>);
 		void setArtikels(vector<Artikel*>);
 
@@ -53,15 +54,17 @@ class Bandencentrale
 		Artikel * setupBand();
 		Artikel * setupVelg();
 		Klant * setupBedrijfsklant();
+		Factuur * setupFactuur();
+
 
 		//print
-		void printClients() const;
-		void printArticles(string optional = "All") const;
-		void printSizes() const;
+		void printClients();
+		void printArticles(char[]);
+		void printSizes();
 
 		//search
-		int searchArticles(string);
-		int searchClients(string);
+		int searchArticles(char[]);
+		int searchClients(char[]);
 
 		//remove
 		void removeArticle();
@@ -71,10 +74,11 @@ class Bandencentrale
 		void readData();
 
 	private:
-		string Naam;
-		string Adres;
+		char Naam[20];
+		char Adres[64];
 		vector<Klant*> Klanten;
 		vector<Artikel*> Artikels;
+		vector<Factuur*> Facturen;
 
 };
 

@@ -3,7 +3,7 @@
 Bedrijfsklant::Bedrijfsklant()
 {
 }
-Bedrijfsklant::Bedrijfsklant(string n, string a, double k, string b, double k2, string btw, double v, double bk)
+Bedrijfsklant::Bedrijfsklant(char n[], char a[], double k, char b[], double k2, char btw[], double v, double bk)
 {
 	std::cout << "Constructed BedrijfsKlant()";
 	this->setNaam(n);
@@ -24,55 +24,41 @@ Bedrijfsklant::~Bedrijfsklant()
 
 
 //getters
-string Bedrijfsklant::getBTWnummer() const
+ char * Bedrijfsklant::getBTWnummer() 
 {
 	return this->BTWnummer;
 }
 
-double Bedrijfsklant::getVolumekorting() const
+double Bedrijfsklant::getVolumekorting() 
 {
 	return this->Volumekorting;
 }
 
-double Bedrijfsklant::getBedrijfskorting() const
+double Bedrijfsklant::getBedrijfskorting() 
 {
 	return this->Bedrijfskorting;
 }
 
 
 //setters
-void Bedrijfsklant::setBTWnummer(string s)
+void Bedrijfsklant::setBTWnummer(char s[])
 {
-	this->BTWnummer = s;
+	strcpy_s(this->BTWnummer, s);
 }
 
-void Bedrijfsklant::setVolumekorting(int i) // kortingen worden rationaal opgeslagen voor later makkelijker met te rekenen
+void Bedrijfsklant::setVolumekorting(double d) // kortingen worden rationaal opgeslagen voor later makkelijker met te rekenen
 {
-	if (i < 0 || i > 100)
-	{
-		this->Volumekorting = 0;
-	}
-	else
-	{
-		this->Volumekorting = ((double)i/100);
-	}
+		this->Volumekorting = d;
 }
 
-void Bedrijfsklant::setBedrijfskorting(int i)
+void Bedrijfsklant::setBedrijfskorting(double d)
 {
-	if (i < 0 || i > 100)
-	{
-		this->Bedrijfskorting = 0;
-	}
-	else
-	{
-		this->Bedrijfskorting = ((double)i / 100);
-	}
+		this->Bedrijfskorting = d;
 }
 
 
 //print
-void Bedrijfsklant::print() const
+void Bedrijfsklant::print()
 {
 	Klant::print();
 

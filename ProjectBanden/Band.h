@@ -1,7 +1,6 @@
 #pragma once
 #include "Artikel.h"
 
-
 class Band :
 	public Artikel
 {
@@ -9,29 +8,30 @@ class Band :
 
 		//constructor & deconstructor
 		Band();
-		Band(string, string, double, int, string, int, int, int, string, bool);
+		Band(char[], char[], double, int, char[], int, int, int, char[], bool);
 		virtual ~Band();
 
 		//getters
-		int getBreedte() const;
-		int getHoogte() const;
-		string getSnelheidsindex() const;
-		string getSeizoen() const;
-		int getSeizoenint() const;
+		int getBreedte() ;
+		int getHoogte() ;
+		 char* getSnelheidsindex() ;
+		 char* getSeizoen() ;
+		int getSeizoenint() ;
 	
 		//setters
 		void setBreedte(int);
 		void setHoogte(int);
-		void setSnelheidsindex(string);
+		void setSnelheidsindex(char[]);
 		void setSeizoen(int);
 		
 		//print
-		void print() const;
+		void print();
+
 
 	private:
 		int Breedte;
 		int Hoogte;
-		string Snelheidsindex;
-		string Seizoen;
+		char Snelheidsindex[3];
+		char Seizoen[5];
 };
 

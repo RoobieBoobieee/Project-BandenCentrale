@@ -9,25 +9,25 @@ class Velg :
 	
 		//constructor & deconstructor
 		Velg();
-		Velg(string, string, double, int, string, int, int, string, bool);
+		Velg(char[], char[], double, int, char[], int, int, char[], bool);
 		virtual ~Velg();
 	
 		//getters
-		int getBreedte() const;
-		string getKleur() const;
-		bool getAluminium() const;
+		int getBreedte() ;
+		char* getKleur() ;
+		bool getAluminium() ;
 	
 		//setters
 		void setBreedte(int);
-		void setKleur(string);
+		void setKleur(char[]);
 		void setAluminium(int);
 
 		//print
-		void print() const;
+		void print();
 	
 	private:
 		int Breedte;
-		string Kleur;
+		char Kleur[20];
 		bool Aluminium;
 };
 

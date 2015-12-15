@@ -156,7 +156,7 @@ int articlesmenu()
 		switch (choice)
 		{
 			case 1:
-				BC.printArticles();
+				BC.printArticles("All");
 				break;
 			case 2:
 				BC.printArticles("Band");

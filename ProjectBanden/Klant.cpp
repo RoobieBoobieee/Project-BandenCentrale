@@ -1,12 +1,13 @@
 #include "Klant.h"
 
+#include "StringSerializer.cpp"
 
 //constructor en deconstructor
 Klant::Klant()
 {
 }
 
-Klant::Klant(string n, string a, double k, string b, double k2)
+Klant::Klant(char n[], char a[], double k, char b[], double k2)
 {
 	std::cout << "Constructed BedrijfsKlant()";
 	this->setNaam(n);
@@ -22,75 +23,61 @@ Klant::~Klant()
 
 
 //getters
-string Klant::getNaam() const
+ char* Klant::getNaam() 
 {
 	return this->Naam;
 }
 
-string Klant::getAdres() const
+ char* Klant::getAdres() 
 {
 	return this->Adres;
 }
 
-double Klant::getKorting() const
+double Klant::getKorting() 
 {
 	return this->Korting;
 }
 
-string Klant::getBedrijf() const
+ char* Klant::getBedrijf() 
 {
 	return this->Bedrijf;
 }
 
-double Klant::getKorting2() const
+double Klant::getKorting2() 
 {
 	return this->Korting2;
 }
 
 
 //setters
-void Klant::setNaam(string s)
+void Klant::setNaam(char s[])
 {
-	this->Naam = s;
+	strcpy_s(this->Naam ,s);
 }
 
-void Klant::setAdres(string s)
+void Klant::setAdres(char s[])
 {
-	this->Adres = s;
+	strcpy_s(this->Adres, s);
 }
 
-void Klant::setKorting(int i)
+void Klant::setKorting(double d)
 {
-	if (i < 0 || i > 100)
-	{
-		this->Korting = 0;
-	}
-	else
-	{
-		this->Korting = ((double)i / 100);
-	}
+	this->Korting = d;
 }
 
-void Klant::setBedrijf(string s)
+void Klant::setBedrijf(char s[])
 {
-	this->Bedrijf = s;
+	strcpy_s(this->Bedrijf, s);
 }
 
-void Klant::setKorting2(int i)
+void Klant::setKorting2(double d)
 {
-	if (i < 0 || i > 100)
-	{
-		this->Korting2 = 0;
-	}
-	else
-	{
-		this->Korting2 = ((double)i / 100);
-	}
+	this->Korting2 = d;
 }
 
 
 //print
-void Klant::print() const
+void Klant::print()
 {
 	cout << std::setw(20) << "Naam: ";
 	cout << std::setw(20) << this->getNaam() << endl;

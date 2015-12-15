@@ -1,11 +1,12 @@
 #include "Band.h"
 
+
 //constructor en deconstructor
 Band::Band()
 {
 }
 
-Band::Band(string n, string f, double p, int d, string t, int a, int b, int h, string s, bool se)
+Band::Band(char n[], char f[], double p, int d, char t[], int a, int b, int h, char s[], bool se)
 {
 	std::cout << "Constructed Band()" << endl;
 
@@ -28,29 +29,29 @@ Band::~Band()
 
 
 //getters
-int Band::getBreedte() const
+int Band::getBreedte() 
 {
 	return this->Breedte;
 }
 
-int Band::getHoogte() const
+int Band::getHoogte() 
 {
 	return this->Hoogte;
 }
 
-string Band::getSnelheidsindex() const
+ char* Band::getSnelheidsindex() 
 {
 	return this->Snelheidsindex;
 }
 
-string Band::getSeizoen() const
+ char* Band::getSeizoen() 
 {
 	return this->Seizoen;
 }
 
-int Band::getSeizoenint() const
+int Band::getSeizoenint() 
 {
-	if (this->Seizoen.compare("Winter") == 0)
+	if (strcmp(this->Seizoen, "Winter") == 0)
 	{
 		return 1;
 	}
@@ -86,26 +87,26 @@ void Band::setHoogte(int i)
 	}
 }
 
-void Band::setSnelheidsindex(string s)
+void Band::setSnelheidsindex(char s[])
 {
-	this->Snelheidsindex = s;
+	strcpy_s(this->Snelheidsindex, s);
 }
 
 void Band::setSeizoen(int i)
 {
 	if (i == 1)
 	{
-		this->Seizoen = "Winter";
+		strcpy_s(this->Seizoen, "Winter");
 	}
 	else
 	{
-		this->Seizoen = "Zomer";
+		strcpy_s(this->Seizoen, "Zomer");
 	}
 }
 
 
 //print
-void Band::print() const
+void Band::print()
 {
 	Artikel::print();
 

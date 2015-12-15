@@ -4,7 +4,7 @@
 Velg::Velg()
 {
 }
-Velg::Velg(string n, string f, double p, int d, string t, int a, int b, string k, bool al)
+Velg::Velg(char n[], char f[], double p, int d, char t[], int a, int b, char k[], bool al)
 {
 	std::cout << "Constructed Velg()" << endl;
 
@@ -26,17 +26,17 @@ Velg::~Velg()
 
 
 //getters
-int Velg::getBreedte() const
+int Velg::getBreedte() 
 {
 	return this->Breedte;
 }
 
-string Velg::getKleur() const
+char* Velg::getKleur() 
 {
 	return this->Kleur;
 }
 
-bool Velg::getAluminium() const
+bool Velg::getAluminium() 
 {
 	return this->Aluminium;
 }
@@ -55,9 +55,9 @@ void Velg::setBreedte(int i)
 	}
 }
 
-void Velg::setKleur(string s)
+void Velg::setKleur(char s[])
 {
-	this->Kleur = s;
+	strcpy_s(this->Kleur, s);
 }
 
 void Velg::setAluminium(int i)
@@ -74,7 +74,7 @@ void Velg::setAluminium(int i)
 
 
 //print
-void Velg::print() const
+void Velg::print()
 {
 	Artikel::print();
 

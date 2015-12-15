@@ -11,36 +11,36 @@ Bandencentrale::~Bandencentrale()
 
 
 //getters
-string Bandencentrale::getNaam() const 
+ char* Bandencentrale::getNaam() 
 {
 	return this->Naam;
 }
 
-string Bandencentrale::getAdres() const
+ char* Bandencentrale::getAdres() 
 {
 	return this->Adres;
 }
 
-vector<Klant*> const* Bandencentrale::getKlanten() const
+vector<Klant*> * Bandencentrale::getKlanten() 
 {
 	return &Klanten;
 }
 
-vector<Artikel*> const* Bandencentrale::getArtikels() const
+vector<Artikel*> * Bandencentrale::getArtikels() 
 {
 	return &Artikels;
 }
 
 
 //setters
-void Bandencentrale::setNaam(std::string s)
+void Bandencentrale::setNaam(char s[])
 {
-	this->Naam = s;
+	strcpy_s(this->Naam, s);
 }
 
-void Bandencentrale::setAdres(string s)
+void Bandencentrale::setAdres(char s[])
 {
-	this->Adres = s;
+	strcpy_s(this->Adres, s);
 }
 
 void Bandencentrale::setKlanten(vector<Klant*> v)
@@ -134,16 +134,16 @@ void Bandencentrale::addClient(Klant * k)
 //setup
 void Bandencentrale::setupArtikel(Artikel * a)
 {
-	string str;
 	double dbl;
 	int intgr;
+	char str[20];
 
 	cout << "Naam: ";
-	getline(std::cin, str);
+	cin.getline(str, 20);
 	a->setNaam(str);
 
 	cout << "Fabrikant: ";
-	getline(std::cin, str);
+	cin.getline(str, 20);
 	a->setFabrikant(str);
 
 	cout << "Prijs: ";
@@ -171,8 +171,8 @@ Artikel * Bandencentrale::setupBand()
 
 	Band *b = dynamic_cast<Band *>(a);
 
-	string str;
 	int intgr;
+	char str[20];
 
 	cout << "Breedte: ";
 	cin >> intgr;
@@ -185,7 +185,7 @@ Artikel * Bandencentrale::setupBand()
 	b->setHoogte(intgr);
 
 	cout << "Snelheidsindex: ";
-	getline(std::cin, str);
+	cin.getline(str, 20);
 	b->setSnelheidsindex(str);
 
 	cout << "Seizoen (Zomer=0; Winter = 1): ";
@@ -214,8 +214,8 @@ Artikel * Bandencentrale::setupVelg()
 
 	Velg *b = dynamic_cast<Velg *>(a);
 
-	string str;
 	int intgr;
+	char str[20];
 
 	cout << "Breedte: ";
 	cin >> intgr;
@@ -223,7 +223,7 @@ Artikel * Bandencentrale::setupVelg()
 	b->setBreedte(intgr);
 
 	cout << "Kleur: ";
-	getline(std::cin, str);
+	cin.getline(str, 20);
 	b->setKleur(str);
 
 	cout << "Aluminium: (Nee=0; Ja=1)" << endl;
@@ -248,16 +248,17 @@ Klant * Bandencentrale::setupKlant()
 {
 	Klant* k = new Klant;
 
-	string str;
 	int intgr;
+	char str[20];
+	char adres[64];
 
 	cout << "Naam: ";
-	getline(std::cin, str);
+	cin.getline(str, 20);
 	k->setNaam(str);
-
+	
 	cout << "Adres: ";
-	getline(std::cin, str);
-	k->setAdres(str);
+	cin.getline(adres, 64);
+	k->setAdres(adres);
 
 	cout << "Korting: ";
 	cin >> intgr;
@@ -269,6 +270,7 @@ Klant * Bandencentrale::setupKlant()
 	cin.get();
 	k->setKorting2(intgr);
 
+	k->setBedrijf("");
 	std::ofstream outCredit("data/klanten.dat", ios::app | ios::binary);
 
 	if (!outCredit)
@@ -279,24 +281,27 @@ Klant * Bandencentrale::setupKlant()
 	}
 
 	outCredit.write(reinterpret_cast< const char * >(k), sizeof(Klant));
-
+	//outCredit << k << endl;
+	
 	return (k);
+	
 }
 
 Klant * Bandencentrale::setupBedrijfsklant()
 {
 		Bedrijfsklant* k = new Bedrijfsklant;
 
-		string str;
 		int intgr;
+		char str[20];
+		char adres[64];
 
 		cout << "Naam: ";
-		getline(std::cin, str);
+		cin.getline(str, 20);
 		k->setNaam(str);
 
 		cout << "Adres: ";
-		getline(std::cin, str);
-		k->setAdres(str);
+		cin.getline(adres, 64);
+		k->setNaam(adres);
 
 		cout << "Korting: ";
 		cin >> intgr;
@@ -309,11 +314,11 @@ Klant * Bandencentrale::setupBedrijfsklant()
 		k->setKorting2(intgr);
 
 		cout << "Bedrijf: ";
-		getline(std::cin, str);
+		cin.getline(str, 20);
 		k->setBedrijf(str);
 
 		cout << "BTW Nummer: ";
-		getline(std::cin, str);
+		cin.getline(str, 20);
 		k->setBTWnummer(str);
 
 		cout << "Volumekorting: ";
@@ -339,22 +344,27 @@ Klant * Bandencentrale::setupBedrijfsklant()
 		return(k);
 }
 
+Factuur * Bandencentrale::setupFactuur()
+{
+	return nullptr;
+}
+
 
 //print
-void Bandencentrale::printClients() const
+void Bandencentrale::printClients()
 {
 	system("cls");
 
- 	for (vector<Klant*>::const_iterator i = this->getKlanten()->cbegin(); i != this->getKlanten()->cend(); ++i)
+ 	for (vector<Klant*>::iterator i = this->getKlanten()->begin(); i != this->getKlanten()->end(); ++i)
 	{
-		
-		if ((*i)->getBedrijf().compare("") == 0) {
+
+		if (strcmp((*i)->getBedrijf(), "") == 0) {
 			(*i)->print();
 
 		} 
 		else
 		{
-			const Bedrijfsklant *bedrijfsklant = dynamic_cast<const Bedrijfsklant *>(*i);
+			Bedrijfsklant *bedrijfsklant = dynamic_cast<Bedrijfsklant *>(*i);
 			bedrijfsklant->print();
 		}
 
@@ -368,24 +378,23 @@ void Bandencentrale::printClients() const
 	system("pause");
 }
 
-void Bandencentrale::printArticles(string s) const
+void Bandencentrale::printArticles(char s[]) 
 {
 	system("cls");
 
-	for (vector<Artikel*>::const_iterator i = this->getArtikels()->cbegin(); i != this->getArtikels()->cend(); ++i)
+	for (vector<Artikel*>::iterator i = this->getArtikels()->begin(); i != this->getArtikels()->end(); ++i)
 	{
+		if (strcmp((*i)->getType(), s) == 0 || strcmp((*i)->getType(), "") == 0) {
 
-		if ((*i)->getType().compare(s) == 0 || s.compare("All") == 0) {
-
-			if ((*i)->getType().compare("Band") == 0)
+			if (strcmp((*i)->getType(), "Band") == 0)
 			{
-				const Band *band = dynamic_cast<const Band *>(*i);
+				 Band *band = dynamic_cast<Band *>(*i);
 
 				band->print();
 			}
-			else if ((*i)->getType().compare("Velg") == 0)
+			else if (strcmp((*i)->getType(), "Velg") == 0)
 			{
-				const Velg *velg = dynamic_cast<const Velg *>(*i);
+				 Velg *velg = dynamic_cast<Velg *>(*i);
 
 				velg->print();
 			}
@@ -399,11 +408,11 @@ void Bandencentrale::printArticles(string s) const
 	system("pause");
 }
 
-void Bandencentrale::printSizes() const
+void Bandencentrale::printSizes()
 {
 	system("cls");
 
-	for (vector<Artikel*>::const_iterator i = this->getArtikels()->cbegin(); i != this->getArtikels()->cend(); ++i)
+	for (vector<Artikel*>::iterator i = this->getArtikels()->begin(); i != this->getArtikels()->end(); ++i)
 	{
 		cout << (*i)->getDiameter() << " mm" << endl;
 	}
@@ -419,12 +428,12 @@ void Bandencentrale::printSizes() const
 
 //search
 
-int Bandencentrale::searchArticles(string s)
+int Bandencentrale::searchArticles(char s[])
 {
 	int index = 0;
 	for (vector<Artikel*>::const_iterator i = this->getArtikels()->cbegin(); i != this->getArtikels()->cend(); ++i)
 	{
-		if ((*i)->getNaam().compare(s) == 0)
+		if (strcmp((*i)->getNaam(), s) == 0)
 		{
 			return (index);
 		}
@@ -434,12 +443,12 @@ int Bandencentrale::searchArticles(string s)
 	return -1;
 }
 
-int Bandencentrale::searchClients(string s)
+int Bandencentrale::searchClients(char s[])
 {
 	int index = 0;
 	for (vector<Klant*>::const_iterator i = this->getKlanten()->cbegin(); i != this->getKlanten()->cend(); ++i)
 	{
-		if ((*i)->getNaam().compare(s) == 0)
+		if (strcmp((*i)->getNaam(), s) == 0)
 		{
 			return (index);
 		}
@@ -454,12 +463,12 @@ int Bandencentrale::searchClients(string s)
 
 void Bandencentrale::removeArticle()
 {
-	string str;
+	char str[20];
 	int index = 0;
 	do
 	{
 		cout << "Naam van artikel dat u wilt verwijderen: ";
-		getline(std::cin, str);
+		cin.getline(str, 20);
 
 		index = searchArticles(str);
 
@@ -473,20 +482,20 @@ void Bandencentrale::removeArticle()
 		else
 		{
 			cout << "Geen artikel gevonden. Wilt u opnieuw proberen? (j/n)";
-			getline(std::cin, str);
+			cin.getline(str, 20);
 		}
-	} while (str.compare("j") && index < 0);
+	} while (strcmp(str, "j") && index < 0);
 
 }
 
 void Bandencentrale::removeClient()
 {
-	string str;
+	char str[20];
 	int index = 0;
 	do
 	{
 		cout << "Naam van de klant die u wilt verwijderen: ";
-		getline(std::cin, str);
+		cin.getline(str, 20);
 
 		index = searchClients(str);
 
@@ -500,9 +509,9 @@ void Bandencentrale::removeClient()
 		else
 		{
 			cout << "Geen klant gevonden. Wilt u opnieuw proberen? (j/n)";
-			getline(std::cin, str);
+			cin.getline(str, 20);
 		}
-	} while (str.compare("j") && index < 0);
+	} while (strcmp(str, "j") && index < 0);
 
 }
 
@@ -609,7 +618,7 @@ void Bandencentrale::readData()
 
 			k = new Klant;
 
-			inKlanten.read(reinterpret_cast<char *>(k), sizeof(Band));
+			inKlanten.read(reinterpret_cast<char *>(k), sizeof(Klant));
 		}
 	}
 

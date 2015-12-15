@@ -19,11 +19,11 @@ class Factuur
 		virtual ~Factuur();
 			
 		//getters 
-		int getFactuurnummer() const;
-		Klant const* getKlant() const;
-		vector<Artikel*> const * getArtikels() const;
-		double getTotaalprijs() const;
-		double getKorting() const;
+		int getFactuurnummer() ;
+		Klant * getKlant() ;
+		vector<Artikel*>  * getArtikels() ;
+		double getTotaalprijs() ;
+		double getKorting() ;
 
 		//setters
 		void setFactuurnummer(int);

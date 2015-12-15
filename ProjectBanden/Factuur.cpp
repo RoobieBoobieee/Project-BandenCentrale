@@ -11,27 +11,27 @@ Factuur::~Factuur()
 
 
 //getters
-int Factuur::getFactuurnummer() const
+int Factuur::getFactuurnummer() 
 {
 	return this->Factuurnummer;
 }
 
-Klant const * Factuur::getKlant() const
+Klant * Factuur::getKlant() 
 {
 	return this->_Klant;
 }
 
-vector <Artikel*> const * Factuur::getArtikels() const
+vector <Artikel*> * Factuur::getArtikels() 
 {
 	return &Artikels;
 }
 
-double Factuur::getTotaalprijs() const
+double Factuur::getTotaalprijs() 
 {
 	return this->Totaalprijs;
 }
 
-double Factuur::getKorting() const
+double Factuur::getKorting() 
 {
 	return this->Korting;
 }

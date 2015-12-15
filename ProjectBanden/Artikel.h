@@ -19,29 +19,29 @@ class Artikel
 		virtual ~Artikel();
 
 		// getters
-		string getNaam() const;
-		string getFabrikant() const;
-		double getPrijs() const;
-		int getDiameter() const;
-		string getType() const;
-		int getAantal() const;
+		char* getNaam() ;
+		char* getFabrikant() ;
+		double getPrijs() ;
+		int getDiameter() ;
+		char* getType() ;
+		int getAantal();
 	
 		// setters
-		void setNaam(string);
-		void setFabrikant(string);
+		void setNaam(char[]);
+		void setFabrikant(char[]);
 		void setPrijs(double);
 		void setDiameter(int);
-		void setType(string);
+		void setType(char[]);
 		void setAantal(int);
 
 		//print
-		void print() const;
+		void print();
 
 	private:
-		string Naam;
-		string Fabrikant;
+		char Naam[20];
+		char Fabrikant[20];
 		double Prijs;
 		int Diameter;
-		string Type;
+		char Type[4];
 		int Aantal;
 };

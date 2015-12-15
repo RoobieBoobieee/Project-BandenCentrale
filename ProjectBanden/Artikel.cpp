@@ -14,46 +14,46 @@ Artikel::~Artikel()
 
 
 //getters
-string Artikel::getNaam() const
+ char* Artikel::getNaam() 
 {
 	return this->Naam;
 }
 
-string Artikel::getFabrikant() const
+ char* Artikel::getFabrikant() 
 {
 	return this->Fabrikant;
 }
 
-double Artikel::getPrijs() const
+double Artikel::getPrijs() 
 {
 	return this->Prijs;
 }
 
-int Artikel::getDiameter() const
+int Artikel::getDiameter() 
 {
 	return this->Diameter;
 }
 
-string Artikel::getType() const
+char* Artikel::getType() 
 {
 	return this->Type;
 }
 
-int Artikel::getAantal() const
+int Artikel::getAantal() 
 {
 	return this->Aantal;
 }
 
 
 //setters
-void Artikel::setNaam(string s)
+void Artikel::setNaam(char s[])
 {
-	this->Naam = s;
+	strcpy_s(this->Naam, s);
 }
 
-void Artikel::setFabrikant(string s)
+void Artikel::setFabrikant(char s[])
 {
-	this->Fabrikant = s;
+	strcpy_s(this->Fabrikant, s);
 }
 
 void Artikel::setPrijs(double d)
@@ -80,16 +80,16 @@ void Artikel::setDiameter(int i)
 	}
 }
 
-void Artikel::setType(string s)
+void Artikel::setType(char s[])
 {
 	// Just to be sure. Gebruiker kan hier normaal niets verkeerd doen aangezien programma deze prop altijd invult. 
-	if (s.compare("Velg") == 0)
+	if (strcmp(s, "Velg") == 0)
 	{
-		this->Type = s;
+		strcpy_s(this->Type, s);
 	}
 	else
 	{
-		this->Type = "Band";
+		strcpy_s(this->Type, "Band");
 	}
 }
 
@@ -106,7 +106,7 @@ void Artikel::setAantal(int i)
 }
 
 
-void Artikel::print() const
+void Artikel::print()
 {
 	cout << std::setw(20) << "Naam: ";
 	cout << std::setw(20) << this->getNaam();
