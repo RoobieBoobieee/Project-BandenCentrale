@@ -361,82 +361,87 @@ Klant * Bandencentrale::setupBedrijfsklant()
 
 Factuur * Bandencentrale::setupFactuur()
 {
-	Factuur* f = new Factuur;
+		Factuur* f = new Factuur;
 
-	int intgr;
-	char str[20];
+		int intgr;
+		char str[20];
 
-	cout << "Factuurnummer: ";
-	cin >> intgr;
-	cin.get();
-	f->setFactuurnummer(intgr);
+		cout << "Factuurnummer: ";
+		cin >> intgr;
+		cin.get();
+		f->setFactuurnummer(intgr);
 
-	do
-	{
-		cout << "Naam van de klant: ";
-		cin.getline(str, 20);
-
-		intgr = searchClients(str);
-
-		if (intgr >= 0)
+		do
 		{
-			f->setKlant(Klanten[intgr]);
-			cout << "Klant toegevoegd!" << endl;
-		}
-		else
-		{
-			f->setKlant(NULL);
-			cout << "Geen klant gevonden. Wilt u opnieuw proberen? (j/n)";
+			cout << "Naam van de klant: ";
 			cin.getline(str, 20);
-			if (strcmp(str, "n"))
+
+			intgr = searchClients(str);
+
+			if (intgr >= 0)
 			{
-				exit(1); //???
+				f->setKlant(Klanten[intgr]);
+				cout << "Klant toegevoegd!" << endl;
 			}
-		}
-	} while (strcmp(str, "j") == 0);
+			else
+			{
+				f->setKlant(NULL);
+				cout << "Geen klant gevonden. Wilt u opnieuw proberen? (j/n)";
+				cin.getline(str, 20);
+				if (strcmp(str, "n"))
+				{
+					exit(1); //???
+				}
+			}
+		} while (strcmp(str, "j") == 0);
 
 
-	do
-	{
-		cout << "Naam van artikel dat u wilt toevoegen: ";
-		cin.getline(str, 20);
-
-		intgr = searchArticles(str);
-
-		if (intgr >= 0)
+		do
 		{
-			f->addArtikel(Artikels[intgr]);
-			Artikels[intgr]->setAantal(Artikels[intgr]->getAantal() - 1);
-			cout << "Artikel toegevoegd!" << endl;
-			cout << "Wilt u nog een artikel toevoegen? (j/n)";
+			cout << "Naam van artikel dat u wilt toevoegen: ";
 			cin.getline(str, 20);
-		}
-		else
+
+			intgr = searchArticles(str);
+
+			if (intgr >= 0)
+			{
+				f->addArtikel(Artikels[intgr]);
+				Artikels[intgr]->setAantal(Artikels[intgr]->getAantal() - 1);
+				cout << "Artikel toegevoegd!" << endl;
+				cout << "Wilt u nog een artikel toevoegen? (j/n)";
+				cin.getline(str, 20);
+			}
+			else
+			{
+				cout << "Geen artikel gevonden. Wilt u opnieuw proberen? (j/n)";
+				cin.getline(str, 20);
+			}
+		} while (strcmp(str, "j") == 0);
+
+
+		cout << "Korting: ";
+		cin >> intgr;
+		cin.get();
+		f->setKorting(intgr);
+
+		//dees ga nie werken heeee
+
+		//facturen bevatten pointers die weggeschreven moeten worden, maar ik heb geen flauw idee hoe eigenlijk
+
+		/*
+		std::ofstream outCredit("data/facturen.dat", ios::app | ios::binary);
+
+		if (!outCredit)
 		{
-			cout << "Geen artikel gevonden. Wilt u opnieuw proberen? (j/n)";
-			cin.getline(str, 20);
+			cerr << "File could not be opened." << endl;
+			system("pause");
+			exit(1);
 		}
-	} while (strcmp(str, "j") == 0);
 
+		outCredit.write(reinterpret_cast<const char *>(f), sizeof(Factuur));*/
 
-	cout << "Korting: ";
-	cin >> intgr;
-	cin.get();
-	f->setKorting(intgr);
+		return (f);
 
-	//dees ga nie werken heeee
-	std::ofstream outCredit("data/facturen.dat", ios::app | ios::binary);
-
-	if (!outCredit)
-	{
-		cerr << "File could not be opened." << endl;
-		system("pause");
-		exit(1);
-	}
-
-	outCredit.write(reinterpret_cast< const char * >(f), sizeof(Factuur));
-
-	return (f);
 }
 
 
@@ -764,6 +769,7 @@ void Bandencentrale::readData()
 
 	//facturen
 
+	/*
 	std::ifstream inFacturen("data/facturen.dat", ios::binary);
 
 	if (!inFacturen)
@@ -785,7 +791,7 @@ void Bandencentrale::readData()
 
 			inFacturen.read(reinterpret_cast<char *>(f), sizeof(Factuur));
 		}
-	}
+	}*/
 
 }
 

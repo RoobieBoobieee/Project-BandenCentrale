@@ -13,9 +13,9 @@ using std::endl;
 class Artikel
 {
 	public:
-	
 		//constructor & deconstructor
 		Artikel();
+		Artikel(char[], char[], double, int, char[], int);
 		virtual ~Artikel();
 
 		// getters

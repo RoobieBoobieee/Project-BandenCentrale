@@ -7,15 +7,9 @@ Band::Band()
 }
 
 Band::Band(char n[], char f[], double p, int d, char t[], int a, int b, int h, char s[], bool se)
+	:Artikel(n, f, p, d,t, a)
 {
 	std::cout << "Constructed Band()" << endl;
-
-	this-> setNaam(n);
-	this->setFabrikant(f);
-	this->setPrijs(p);
-	this->setDiameter(d);
-	this->setType(t);
-	this->setAantal(a);
 
 	this->setBreedte(b);
 	this->setHoogte(h);

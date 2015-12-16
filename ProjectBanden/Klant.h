@@ -16,22 +16,22 @@ class Klant
 
 		//constructor en deconstructor
 		Klant();
-		Klant(char[], char[], double, char[], double);
+		Klant(char[], char[], int, char[], int);
 		virtual ~Klant();
 
 		//getters
-		 char* getNaam() ;
-		 char* getAdres() ;
-		double getKorting() ;
-		 char* getBedrijf() ;
-		double getKorting2() ;
+		char* getNaam() ;
+		char* getAdres() ;
+		int getKorting() ;
+		char* getBedrijf() ;
+		int getKorting2() ;
 
 		//setters
 		void setNaam(char[]);
 		void setAdres(char[]);
-		void setKorting(double);
+		void setKorting(int);
 		void setBedrijf(char[]);
-		void setKorting2(double);
+		void setKorting2(int);
 
 		//print
 		void print();
@@ -39,8 +39,8 @@ class Klant
 	private:
 		char Naam[20];
 		char Adres[64];
-		double Korting;
+		int Korting;
 		char Bedrijf[20];
-		double Korting2;
+		int Korting2;
 };
 

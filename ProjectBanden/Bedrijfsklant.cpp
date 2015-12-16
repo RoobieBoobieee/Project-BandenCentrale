@@ -3,14 +3,10 @@
 Bedrijfsklant::Bedrijfsklant()
 {
 }
-Bedrijfsklant::Bedrijfsklant(char n[], char a[], double k, char b[], double k2, char btw[], double v, double bk)
+Bedrijfsklant::Bedrijfsklant(char n[], char a[], int k, char b[], int k2, char btw[], int v, int bk)
+	:Klant(n, a, k, b, k2)
 {
 	std::cout << "Constructed BedrijfsKlant()";
-	this->setNaam(n);
-	this->setAdres(a);
-	this->setKorting(k);
-	this->setKorting2(k2);
-	this->setBedrijf(b);
 
 	this->setBTWnummer(btw);
 	this->setVolumekorting(v);
@@ -29,12 +25,12 @@ Bedrijfsklant::~Bedrijfsklant()
 	return this->BTWnummer;
 }
 
-double Bedrijfsklant::getVolumekorting() 
+ int Bedrijfsklant::getVolumekorting()
 {
 	return this->Volumekorting;
 }
 
-double Bedrijfsklant::getBedrijfskorting() 
+ int Bedrijfsklant::getBedrijfskorting()
 {
 	return this->Bedrijfskorting;
 }
@@ -46,14 +42,14 @@ void Bedrijfsklant::setBTWnummer(char s[])
 	strcpy_s(this->BTWnummer, s);
 }
 
-void Bedrijfsklant::setVolumekorting(double d) // kortingen worden rationaal opgeslagen voor later makkelijker met te rekenen
+void Bedrijfsklant::setVolumekorting(int i) 
 {
-		this->Volumekorting = d;
+		this->Volumekorting = i;
 }
 
-void Bedrijfsklant::setBedrijfskorting(double d)
+void Bedrijfsklant::setBedrijfskorting(int i)
 {
-		this->Bedrijfskorting = d;
+		this->Bedrijfskorting = i;
 }
 
 

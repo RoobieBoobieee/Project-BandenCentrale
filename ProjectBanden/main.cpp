@@ -25,11 +25,17 @@ int main()
 		cout << "##############################################################################" << endl;
 		cout << "#                                                            Logged In As: " << id << " #" << endl;
 		cout << "#    1. Artikels Bekijken                                                    #" << endl;
-		cout << "#    2. Artikel Toevoegen                                                    #" << endl;
-		cout << "#    3. Artikel Verwijderen                                                  #" << endl;
+		if (id == 1)
+		{
+			cout << "#    2. Artikel Toevoegen                                                    #" << endl;
+			cout << "#    3. Artikel Verwijderen                                                  #" << endl;
+		}
 		cout << "#    4. Klanten Bekijken                                                     #" << endl;
 		cout << "#    5. Klant Toevoegen                                                      #" << endl;
-		cout << "#    6. Klant Verwijderen                                                    #" << endl;
+		if (id == 1)
+		{
+			cout << "#    6. Klant Verwijderen                                                    #" << endl;
+		}
 		cout << "#    7. Factuuur Aanmaken                                                    #" << endl;
 		cout << "#    8. Facturen Bekijken                                                    #" << endl;
 		cout << "#    9. Stoppen                                                              #" << endl;
@@ -47,11 +53,17 @@ int main()
 			break;
 
 		case 2:
-			BC.addArtikel();
+			if (id == 1)
+			{
+				BC.addArtikel();
+			}
 			break;
 
 		case 3:
-			BC.removeArticle();
+			if (id == 1)
+			{
+				BC.removeArticle();
+			}
 			break;
 
 		case 4:
@@ -63,7 +75,10 @@ int main()
 			break;
 
 		case 6:
-			BC.removeClient();
+			if (id == 1)
+			{
+				BC.removeClient();
+			}
 			break;
 
 		case 7:

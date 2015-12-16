@@ -5,7 +5,6 @@ class Band :
 	public Artikel
 {
 	public:
-
 		//constructor & deconstructor
 		Band();
 		Band(char[], char[], double, int, char[], int, int, int, char[], bool);
@@ -14,8 +13,8 @@ class Band :
 		//getters
 		int getBreedte() ;
 		int getHoogte() ;
-		 char* getSnelheidsindex() ;
-		 char* getSeizoen() ;
+		char* getSnelheidsindex() ;
+		char* getSeizoen() ;
 		int getSeizoenint() ;
 	
 		//setters
@@ -26,7 +25,6 @@ class Band :
 		
 		//print
 		void print();
-
 
 	private:
 		int Breedte;

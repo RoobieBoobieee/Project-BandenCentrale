@@ -13,7 +13,6 @@ using std::vector;
 class Factuur
 {
 	public:
-	
 		//constructor en deconstructor
 		Factuur();
 		virtual ~Factuur();
@@ -23,7 +22,7 @@ class Factuur
 		Klant * getKlant() ;
 		vector<Artikel*>  * getArtikels() ;
 		double getTotaalprijs() ;
-		double getKorting() ;
+		int getKorting() ;
 
 		//setters
 		void setFactuurnummer(int);
@@ -36,13 +35,12 @@ class Factuur
 		//print
 		void print();
 
-
 	private:
 		int Factuurnummer;
 		Klant *_Klant; //y u do dis
 		vector<Artikel*> Artikels;
-		double Totaalprijs;
-		double Korting;
+		double Totaalprijs = 0;
+		int Korting;
 
 		//setters
 		void addTotaalprijs(double); //totaalprijs wordt intern berekend zodat er niet gefoefeld kan worden

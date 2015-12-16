@@ -8,6 +8,18 @@ Artikel::Artikel()
 {
 }
 
+Artikel::Artikel(char n[], char f[], double p, int d, char t[], int a)
+{
+	std::cout << "Constructed Klant()";
+
+	this->setNaam(n);
+	this->setFabrikant(f);
+	this->setPrijs(p);
+	this->setDiameter(d);
+	this->setType(t);
+	this->setAantal(a);
+}
+
 Artikel::~Artikel()
 {
 }
