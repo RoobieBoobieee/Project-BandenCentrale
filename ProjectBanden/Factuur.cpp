@@ -31,7 +31,7 @@ double Factuur::getTotaalprijs()
 	return this->Totaalprijs;
 }
 
-double Factuur::getKorting() 
+int Factuur::getKorting()
 {
 	return this->Korting;
 }

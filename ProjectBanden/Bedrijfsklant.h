@@ -9,26 +9,26 @@ class Bedrijfsklant :
 	
 		//constructor & deconstructor
 		Bedrijfsklant();
-		Bedrijfsklant(char[], char[], double, char[], double, char[], double, double);
+		Bedrijfsklant(char[], char[], int, char[], int, char[], int, int);
 		virtual ~Bedrijfsklant();
 	
 		//getters
 		 char* getBTWnummer() ;
-		double getVolumekorting() ;
-		double getBedrijfskorting() ;
+		int getVolumekorting() ;
+		int getBedrijfskorting() ;
 	
 		//setters
 		void setBTWnummer(char[]);
-		void setVolumekorting(double);
-		void setBedrijfskorting(double);
+		void setVolumekorting(int);
+		void setBedrijfskorting(int);
 
 		//print
 		void print();
 	
 	private:
 		char BTWnummer[20];
-		double Volumekorting;
-		double Bedrijfskorting;
+		int Volumekorting;
+		int Bedrijfskorting;
 
 };
 

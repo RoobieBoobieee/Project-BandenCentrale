@@ -7,7 +7,7 @@ Klant::Klant()
 {
 }
 
-Klant::Klant(char n[], char a[], double k, char b[], double k2)
+Klant::Klant(char n[], char a[], int k, char b[], int k2)
 {
 	std::cout << "Constructed BedrijfsKlant()";
 	this->setNaam(n);
@@ -33,7 +33,7 @@ Klant::~Klant()
 	return this->Adres;
 }
 
-double Klant::getKorting() 
+ int Klant::getKorting()
 {
 	return this->Korting;
 }
@@ -43,7 +43,7 @@ double Klant::getKorting()
 	return this->Bedrijf;
 }
 
-double Klant::getKorting2() 
+ int Klant::getKorting2()
 {
 	return this->Korting2;
 }
@@ -60,7 +60,7 @@ void Klant::setAdres(char s[])
 	strcpy_s(this->Adres, s);
 }
 
-void Klant::setKorting(double d)
+void Klant::setKorting(int d)
 {
 	this->Korting = d;
 }
@@ -70,7 +70,7 @@ void Klant::setBedrijf(char s[])
 	strcpy_s(this->Bedrijf, s);
 }
 
-void Klant::setKorting2(double d)
+void Klant::setKorting2(int d)
 {
 	this->Korting2 = d;
 }

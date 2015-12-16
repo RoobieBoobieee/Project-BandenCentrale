@@ -528,7 +528,10 @@ void Bandencentrale::printFacturen()
 	{
 		(*i)->print();
 	}
-
+	if (this->getFacturen()->size() == 0)
+	{
+		cout << "Er zijn geen facturen." << endl;
+	}
 	system("pause");
 }
 
@@ -749,16 +752,16 @@ void Bandencentrale::readData()
 			Bedrijfsklant * nb = new Bedrijfsklant;
 
 			nb->setBTWnummer(b->getBTWnummer());
-			nb->setVolumekorting(int(b->getVolumekorting() * 100));
-			nb->setBedrijfskorting(int(b->getBedrijfskorting() * 100));
+			nb->setVolumekorting(b->getVolumekorting());
+			nb->setBedrijfskorting(b->getBedrijfskorting());
 
 			Klant *j = dynamic_cast<Klant *>(b);
 
 			nb->setNaam(j->getNaam());
 			nb->setAdres(j->getAdres());
-			nb->setKorting(int(j->getKorting() * 100));
+			nb->setKorting(j->getKorting());
 			nb->setBedrijf(j->getBedrijf());
-			nb->setKorting2(int(j->getKorting2() * 100));
+			nb->setKorting2(j->getKorting2());
 
 			this->addClient(nb);
 
